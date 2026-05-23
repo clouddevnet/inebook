@@ -1,0 +1,1015 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lab Track 16: Inventories, YAML, JSON, and Real-World Data | Python Network Automation Crash Course</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/book.css">
+</head>
+<body>
+  <nav class="site-nav">
+    <a class="nav-logo" href="index.html">Python Network Automation <span class="logo-badge">Book</span></a>
+    <div class="nav-actions">
+      <a href="part-iii-labs.html">Labs</a>
+      <a href="references.html">References</a>
+      <button class="theme-toggle" data-theme-toggle type="button">Dark</button>
+    </div>
+  </nav>
+  <div class="page-layout">
+    <aside class="sidebar-left">
+      <div class="toc-label">Start</div>
+<ol class="chapter-list">
+<li><a class="" href="index.html"><span>Home</span><small>Python Network Automation Crash Course</small></a></li>
+<li><a class="" href="introduction.html"><span>Introduction</span><small>Introduction: The Evolution You Cannot Ignore</small></a></li>
+</ol>
+<div class="toc-label">Chapters</div>
+<ol class="chapter-list">
+<li><a class="" href="ch01-chapter-1-getting-started-in-a-network-lab.html"><span>Ch 1</span><small>Chapter 1: Getting Started in a Network Lab</small></a></li>
+<li><a class="" href="ch02-chapter-2-variables-strings-and-device-facts.html"><span>Ch 2</span><small>Chapter 2: Variables, Strings, and Device Facts</small></a></li>
+<li><a class="" href="ch03-chapter-3-introducing-device-lists.html"><span>Ch 3</span><small>Chapter 3: Introducing Device Lists</small></a></li>
+<li><a class="" href="ch04-chapter-4-working-through-networks-with-loops.html"><span>Ch 4</span><small>Chapter 4: Working Through Networks with Loops</small></a></li>
+<li><a class="" href="ch05-chapter-5-if-statements-for-network-decisions.html"><span>Ch 5</span><small>Chapter 5: If Statements for Network Decisions</small></a></li>
+<li><a class="" href="ch06-chapter-6-dictionaries-for-device-inventory.html"><span>Ch 6</span><small>Chapter 6: Dictionaries for Device Inventory</small></a></li>
+<li><a class="" href="ch07-chapter-7-operator-input-and-while-loops.html"><span>Ch 7</span><small>Chapter 7: Operator Input and While Loops</small></a></li>
+<li><a class="" href="ch08-chapter-8-functions-for-reusable-automation.html"><span>Ch 8</span><small>Chapter 8: Functions for Reusable Automation</small></a></li>
+<li><a class="" href="ch09-chapter-9-classes-for-devices-and-sessions.html"><span>Ch 9</span><small>Chapter 9: Classes for Devices and Sessions</small></a></li>
+<li><a class="" href="ch10-chapter-10-files-exceptions-and-network-data.html"><span>Ch 10</span><small>Chapter 10: Files, Exceptions, and Network Data</small></a></li>
+<li><a class="" href="ch11-chapter-11-testing-network-automation.html"><span>Ch 11</span><small>Chapter 11: Testing Network Automation</small></a></li>
+<li><a class="" href="part-ii-network-automation.html"><span>Part II</span><small>Part II: Applying Python to Network Automation</small></a></li>
+<li><a class="" href="ch12-chapter-12-netmiko-sshing-to-your-network-at-python-sp.html"><span>Ch 12</span><small>Chapter 12: Netmiko: SSHing to Your Network at Python Speed</small></a></li>
+<li><a class="" href="ch13-chapter-13-multi-device-automation-and-file-driven-inv.html"><span>Ch 13</span><small>Chapter 13: Multi-Device Automation and File-Driven Inventory</small></a></li>
+<li><a class="" href="ch14-chapter-14-production-scripts-exceptions-env-vars-and-.html"><span>Ch 14</span><small>Chapter 14: Production Scripts: Exceptions, Env Vars, and Show Commands</small></a></li>
+<li><a class="" href="ch15-chapter-15-automated-backup-and-inventory-reports.html"><span>Ch 15</span><small>Chapter 15: Automated Backup and Inventory Reports</small></a></li>
+</ol>
+<div class="toc-label">Labs</div>
+<ol class="chapter-list">
+<li><a class="" href="part-iii-labs.html"><span>Part III Labs</span><small>Part III: Twin-Bridges Mastery Lab Workbook</small></a></li>
+<li><a class="" href="lab-track-01.html"><span>Lab Track 1</span><small>Lab Track 1: Getting Started in a Network Lab</small></a></li>
+<li><a class="" href="lab-track-02.html"><span>Lab Track 2</span><small>Lab Track 2: Variables, Strings, and Device Facts</small></a></li>
+<li><a class="" href="lab-track-03.html"><span>Lab Track 3</span><small>Lab Track 3: Introducing Device Lists</small></a></li>
+<li><a class="" href="lab-track-04.html"><span>Lab Track 4</span><small>Lab Track 4: Working Through Networks with Loops</small></a></li>
+<li><a class="" href="lab-track-05.html"><span>Lab Track 5</span><small>Lab Track 5: If Statements for Network Decisions</small></a></li>
+<li><a class="" href="lab-track-06.html"><span>Lab Track 6</span><small>Lab Track 6: Dictionaries for Device Inventory</small></a></li>
+<li><a class="" href="lab-track-07.html"><span>Lab Track 7</span><small>Lab Track 7: Operator Input and While Loops</small></a></li>
+<li><a class="" href="lab-track-08.html"><span>Lab Track 8</span><small>Lab Track 8: Functions for Reusable Automation</small></a></li>
+<li><a class="" href="lab-track-09.html"><span>Lab Track 9</span><small>Lab Track 9: Classes for Devices and Sessions</small></a></li>
+<li><a class="" href="lab-track-10.html"><span>Lab Track 10</span><small>Lab Track 10: Files, Exceptions, and Network Data</small></a></li>
+<li><a class="" href="lab-track-11.html"><span>Lab Track 11</span><small>Lab Track 11: Testing Network Automation</small></a></li>
+<li><a class="" href="lab-track-12.html"><span>Lab Track 12</span><small>Lab Track 12: Starting a Netmiko Project</small></a></li>
+<li><a class="" href="lab-track-13.html"><span>Lab Track 13</span><small>Lab Track 13: Collecting Show Commands Across a Fleet</small></a></li>
+<li><a class="" href="lab-track-14.html"><span>Lab Track 14</span><small>Lab Track 14: Configuration, Validation, and Rollback Thinking</small></a></li>
+<li><a class="" href="lab-track-15.html"><span>Lab Track 15</span><small>Lab Track 15: Generating Network Reports</small></a></li>
+<li><a class="active" href="lab-track-16.html"><span>Lab Track 16</span><small>Lab Track 16: Inventories, YAML, JSON, and Real-World Data</small></a></li>
+<li><a class="" href="lab-track-17.html"><span>Lab Track 17</span><small>Lab Track 17: Network APIs</small></a></li>
+<li><a class="" href="lab-track-18.html"><span>Lab Track 18</span><small>Lab Track 18: Building a Network Automation Tool</small></a></li>
+<li><a class="" href="lab-track-19.html"><span>Lab Track 19</span><small>Lab Track 19: Credentials, Ownership, and Guardrails</small></a></li>
+<li><a class="" href="lab-track-20.html"><span>Lab Track 20</span><small>Lab Track 20: Operating and Deploying Automation</small></a></li>
+</ol>
+<div class="toc-label">Back Matter</div>
+<ol class="chapter-list">
+<li><a class="" href="references.html"><span>References</span><small>References</small></a></li>
+</ol>
+    </aside>
+    <main class="main-content">
+      <article class="article-shell">
+        <div class="article-meta">Labs · Lab Track 16</div>
+        <h1 id="lab-track-16-inventories-yaml-json-and-real-world-data">Lab Track 16: Inventories, YAML, JSON, and Real-World Data</h1>
+<h2 id="lab-track-16-inventories-yaml-json-and-real-world-data_1">Lab Track 16: Inventories, YAML, JSON, and Real-World Data</h2>
+<p><strong>Concept focus:</strong> load inventories and transform external data into device actions.</p>
+<p><strong>Mental model:</strong> <code>YAML/JSON/source of truth -&gt; parse -&gt; clean -&gt; command plan</code></p>
+<h3 id="tb-186-netmiko_courseclass10exercisesdevicesyaml">TB-186: <code>netmiko_course/class10/exercises/devices.yaml</code></h3>
+<p><strong>Lab type:</strong> Data lab</p>
+<p><strong>Objective:</strong> It stores inventory or settings in a human-readable file that scripts can load and reuse.</p>
+<p><strong>What to notice:</strong></p>
+<ol>
+<li>This is data, not a program: it gives Python facts to work with.</li>
+<li>Think of each key as a label on a box and each value as what is inside the box.</li>
+<li>A script can load this file and use the values to decide which devices or commands to handle.</li>
+</ol>
+<p><strong>Mastery tasks:</strong></p>
+<ul>
+<li>Read the source once without running it. Write one sentence describing its purpose.</li>
+<li>Identify the Python concept from the chapter track that this lab reinforces.</li>
+<li>Find the top-level keys and explain what each section represents operationally.</li>
+<li>Add one safe fake device/object and update a script or pseudocode loop to consume it.</li>
+</ul>
+<p><strong>Source listing:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="nt">cisco3</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">device_type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cisco_xe</span>
+<span class="w">  </span><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cisco3.lasthop.io</span>
+<span class="nt">cisco4</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">device_type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cisco_xe</span>
+<span class="w">  </span><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cisco4.lasthop.io</span>
+<span class="nt">nxos1</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">device_type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cisco_nxos</span>
+<span class="w">  </span><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nxos1.lasthop.io</span>
+<span class="nt">nxos2</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">device_type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cisco_nxos</span>
+<span class="w">  </span><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nxos2.lasthop.io</span>
+<span class="nt">vmx1</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">device_type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">juniper_junos</span>
+<span class="w">  </span><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vmx1.lasthop.io</span>
+<span class="nt">vmx2</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">device_type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">juniper_junos</span>
+<span class="w">  </span><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vmx2.lasthop.io</span>
+</code></pre></div>
+
+<h3 id="tb-187-netmiko_courseclass10exercisesexercise2py">TB-187: <code>netmiko_course/class10/exercises/exercise2.py</code></h3>
+<p><strong>Lab type:</strong> Device automation lab</p>
+<p><strong>Objective:</strong> It shows how Python opens an SSH-style network session, sends commands, and then cleans up the connection.</p>
+<p><strong>What to notice:</strong></p>
+<ol>
+<li>First, it brings in helper tools: <code>os, yaml, getpass.getpass, netmiko.SSHDetect, concurrent.futures.ThreadPoolExecutor, concurrent.futures.as_completed</code>.</li>
+<li>Then it gets secrets from the environment or a password prompt, instead of hard-coding them.</li>
+<li>It defines reusable function(s): <code>find_device_type</code>.</li>
+<li>It reads or writes files, which is how automation remembers inventory, commands, or reports.</li>
+<li>It prints something you can see, so you know the script actually ran.</li>
+</ol>
+<p><strong>Mastery tasks:</strong></p>
+<ul>
+<li>Read the source once without running it. Write one sentence describing its purpose.</li>
+<li>Identify the Python concept from the chapter track that this lab reinforces.</li>
+<li>Run it in a safe lab or convert it to a dry run by replacing device calls with <code>print()</code> statements.</li>
+<li>Change exactly one value, predict the result, then run again.</li>
+</ul>
+<p><strong>Source listing:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">yaml</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">getpass</span><span class="w"> </span><span class="kn">import</span> <span class="n">getpass</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">netmiko</span><span class="w"> </span><span class="kn">import</span> <span class="n">SSHDetect</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">concurrent.futures</span><span class="w"> </span><span class="kn">import</span> <span class="n">ThreadPoolExecutor</span><span class="p">,</span> <span class="n">as_completed</span>
+
+
+<span class="c1"># Code so automated tests will run properly</span>
+<span class="n">PASSWORD</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;NETMIKO_PASSWORD&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;NETMIKO_PASSWORD&quot;</span><span class="p">)</span> <span class="k">else</span> <span class="n">getpass</span><span class="p">()</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">find_device_type</span><span class="p">(</span><span class="n">hostname</span><span class="p">):</span>
+
+    <span class="n">base_device</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;device_type&quot;</span><span class="p">:</span> <span class="s2">&quot;autodetect&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;username&quot;</span><span class="p">:</span> <span class="s2">&quot;pyclass&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;password&quot;</span><span class="p">:</span> <span class="n">PASSWORD</span><span class="p">,</span>
+    <span class="p">}</span>
+
+    <span class="n">device</span> <span class="o">=</span> <span class="n">base_device</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">device</span><span class="p">[</span><span class="s2">&quot;host&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">hostname</span>
+    <span class="n">guesser</span> <span class="o">=</span> <span class="n">SSHDetect</span><span class="p">(</span><span class="o">**</span><span class="n">device</span><span class="p">)</span>
+    <span class="n">best_match</span> <span class="o">=</span> <span class="n">guesser</span><span class="o">.</span><span class="n">autodetect</span><span class="p">()</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">hostname</span><span class="p">,</span> <span class="n">best_match</span><span class="p">)</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+
+    <span class="n">hosts_file</span> <span class="o">=</span> <span class="s2">&quot;my_hosts.txt&quot;</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">hosts_file</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">hosts</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+
+    <span class="n">pool</span> <span class="o">=</span> <span class="n">ThreadPoolExecutor</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+    <span class="n">future_list</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">hostname</span> <span class="ow">in</span> <span class="n">hosts</span><span class="p">:</span>
+        <span class="n">hostname</span> <span class="o">=</span> <span class="n">hostname</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+        <span class="n">future</span> <span class="o">=</span> <span class="n">pool</span><span class="o">.</span><span class="n">submit</span><span class="p">(</span><span class="n">find_device_type</span><span class="p">,</span> <span class="n">hostname</span><span class="p">)</span>
+        <span class="n">future_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">future</span><span class="p">)</span>
+
+    <span class="c1"># Display the results</span>
+    <span class="n">my_devices</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="nb">print</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">future</span> <span class="ow">in</span> <span class="n">as_completed</span><span class="p">(</span><span class="n">future_list</span><span class="p">):</span>
+        <span class="n">hostname</span><span class="p">,</span> <span class="n">device_type</span> <span class="o">=</span> <span class="n">future</span><span class="o">.</span><span class="n">result</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">hostname</span><span class="si">}</span><span class="s2"> -&gt; </span><span class="si">{</span><span class="n">device_type</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="n">hostname</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">my_devices</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">my_devices</span><span class="p">[</span><span class="n">name</span><span class="p">][</span><span class="s2">&quot;hostname&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">hostname</span>
+        <span class="n">my_devices</span><span class="p">[</span><span class="n">name</span><span class="p">][</span><span class="s2">&quot;device_type&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">device_type</span>
+    <span class="nb">print</span><span class="p">()</span>
+
+    <span class="c1"># Write external YAML file</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Creating devices.yaml file</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;devices.yaml&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">yaml</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">my_devices</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
+</code></pre></div>
+
+<h3 id="tb-188-netmiko_courseclass10exercisesexercise1py">TB-188: <code>netmiko_course/class10/exercises/exercise1.py</code></h3>
+<p><strong>Lab type:</strong> Device automation lab</p>
+<p><strong>Objective:</strong> It shows how Python opens an SSH-style network session, sends commands, and then cleans up the connection.</p>
+<p><strong>What to notice:</strong></p>
+<ol>
+<li>First, it brings in helper tools: <code>os, getpass.getpass, netmiko.SSHDetect, concurrent.futures.ThreadPoolExecutor, concurrent.futures.as_completed</code>.</li>
+<li>Then it gets secrets from the environment or a password prompt, instead of hard-coding them.</li>
+<li>It defines reusable function(s): <code>find_device_type</code>.</li>
+<li>It prints something you can see, so you know the script actually ran.</li>
+</ol>
+<p><strong>Mastery tasks:</strong></p>
+<ul>
+<li>Read the source once without running it. Write one sentence describing its purpose.</li>
+<li>Identify the Python concept from the chapter track that this lab reinforces.</li>
+<li>Run it in a safe lab or convert it to a dry run by replacing device calls with <code>print()</code> statements.</li>
+<li>Change exactly one value, predict the result, then run again.</li>
+</ul>
+<p><strong>Source listing:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">getpass</span><span class="w"> </span><span class="kn">import</span> <span class="n">getpass</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">netmiko</span><span class="w"> </span><span class="kn">import</span> <span class="n">SSHDetect</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">concurrent.futures</span><span class="w"> </span><span class="kn">import</span> <span class="n">ThreadPoolExecutor</span><span class="p">,</span> <span class="n">as_completed</span>
+
+
+<span class="c1"># Code so automated tests will run properly</span>
+<span class="n">PASSWORD</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;NETMIKO_PASSWORD&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;NETMIKO_PASSWORD&quot;</span><span class="p">)</span> <span class="k">else</span> <span class="n">getpass</span><span class="p">()</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">find_device_type</span><span class="p">(</span><span class="n">hostname</span><span class="p">):</span>
+
+    <span class="n">base_device</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;device_type&quot;</span><span class="p">:</span> <span class="s2">&quot;autodetect&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;username&quot;</span><span class="p">:</span> <span class="s2">&quot;pyclass&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;password&quot;</span><span class="p">:</span> <span class="n">PASSWORD</span><span class="p">,</span>
+    <span class="p">}</span>
+
+    <span class="n">device</span> <span class="o">=</span> <span class="n">base_device</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">device</span><span class="p">[</span><span class="s2">&quot;host&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">hostname</span>
+    <span class="n">guesser</span> <span class="o">=</span> <span class="n">SSHDetect</span><span class="p">(</span><span class="o">**</span><span class="n">device</span><span class="p">)</span>
+    <span class="n">best_match</span> <span class="o">=</span> <span class="n">guesser</span><span class="o">.</span><span class="n">autodetect</span><span class="p">()</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">hostname</span><span class="p">,</span> <span class="n">best_match</span><span class="p">)</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+
+    <span class="n">hosts</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="s2">&quot;cisco3.lasthop.io&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;cisco4.lasthop.io&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;nxos1.lasthop.io&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;nxos2.lasthop.io&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;vmx1.lasthop.io&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;vmx2.lasthop.io&quot;</span><span class="p">,</span>
+    <span class="p">]</span>
+
+    <span class="n">pool</span> <span class="o">=</span> <span class="n">ThreadPoolExecutor</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+
+    <span class="n">future_list</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">hostname</span> <span class="ow">in</span> <span class="n">hosts</span><span class="p">:</span>
+        <span class="n">future</span> <span class="o">=</span> <span class="n">pool</span><span class="o">.</span><span class="n">submit</span><span class="p">(</span><span class="n">find_device_type</span><span class="p">,</span> <span class="n">hostname</span><span class="p">)</span>
+        <span class="n">future_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">future</span><span class="p">)</span>
+
+    <span class="c1"># Display the results</span>
+    <span class="nb">print</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{:20}</span><span class="s2"> </span><span class="si">{:20}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;hostname&quot;</span><span class="p">,</span> <span class="s2">&quot;device_type&quot;</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{:20}</span><span class="s2"> </span><span class="si">{:20}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;--------&quot;</span><span class="p">,</span> <span class="s2">&quot;-----------&quot;</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">future</span> <span class="ow">in</span> <span class="n">as_completed</span><span class="p">(</span><span class="n">future_list</span><span class="p">):</span>
+        <span class="n">hostname</span><span class="p">,</span> <span class="n">device_type</span> <span class="o">=</span> <span class="n">future</span><span class="o">.</span><span class="n">result</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">hostname</span><span class="si">:</span><span class="s2">20</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">device_type</span><span class="si">:</span><span class="s2">20</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">()</span>
+</code></pre></div>
+
+<h3 id="tb-189-netmiko_courseclass10exercisesexercise3py">TB-189: <code>netmiko_course/class10/exercises/exercise3.py</code></h3>
+<p><strong>Lab type:</strong> Device automation lab</p>
+<p><strong>Objective:</strong> It shows how Python opens an SSH-style network session, sends commands, and then cleans up the connection.</p>
+<p><strong>What to notice:</strong></p>
+<ol>
+<li>First, it brings in helper tools: <code>os, time, getpass.getpass, netmiko.ConnectHandler</code>.</li>
+<li>Then it gets secrets from the environment or a password prompt, instead of hard-coding them.</li>
+<li>Next, it builds a device connection dictionary and hands it to Netmiko's <code>ConnectHandler</code>.</li>
+<li>It defines reusable function(s): <code>read_device</code>.</li>
+<li>It prints something you can see, so you know the script actually ran.</li>
+</ol>
+<p><strong>Mastery tasks:</strong></p>
+<ul>
+<li>Read the source once without running it. Write one sentence describing its purpose.</li>
+<li>Identify the Python concept from the chapter track that this lab reinforces.</li>
+<li>Run it in a safe lab or convert it to a dry run by replacing device calls with <code>print()</code> statements.</li>
+<li>Change exactly one value, predict the result, then run again.</li>
+<li>Mark the exact line where a real network connection begins and list the required safety checks before that line.</li>
+</ul>
+<p><strong>Source listing:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">getpass</span><span class="w"> </span><span class="kn">import</span> <span class="n">getpass</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">netmiko</span><span class="w"> </span><span class="kn">import</span> <span class="n">ConnectHandler</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">read_device</span><span class="p">(</span><span class="n">net_connect</span><span class="p">,</span> <span class="n">sleep</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Sleep and read channel.&quot;&quot;&quot;</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">sleep</span><span class="p">)</span>
+    <span class="n">output</span> <span class="o">=</span> <span class="n">net_connect</span><span class="o">.</span><span class="n">read_channel</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">output</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+
+    <span class="c1"># Code so automated tests will run properly</span>
+    <span class="n">password</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;NETMIKO_PASSWORD&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;NETMIKO_PASSWORD&quot;</span><span class="p">)</span> <span class="k">else</span> <span class="n">getpass</span><span class="p">()</span>
+    <span class="p">)</span>
+
+    <span class="n">my_device</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;device_type&quot;</span><span class="p">:</span> <span class="s2">&quot;cisco_ios&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;host&quot;</span><span class="p">:</span> <span class="s2">&quot;cisco3.lasthop.io&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;username&quot;</span><span class="p">:</span> <span class="s2">&quot;pyclass&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;password&quot;</span><span class="p">:</span> <span class="n">password</span><span class="p">,</span>
+        <span class="s2">&quot;session_log&quot;</span><span class="p">:</span> <span class="s2">&quot;output.txt&quot;</span><span class="p">,</span>
+    <span class="p">}</span>
+
+    <span class="k">with</span> <span class="n">ConnectHandler</span><span class="p">(</span><span class="o">**</span><span class="n">my_device</span><span class="p">)</span> <span class="k">as</span> <span class="n">net_connect</span><span class="p">:</span>
+
+        <span class="nb">print</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">net_connect</span><span class="o">.</span><span class="n">find_prompt</span><span class="p">())</span>
+
+        <span class="n">cmd</span> <span class="o">=</span> <span class="s2">&quot;telnet 10.220.88.22</span><span class="se">\n</span><span class="s2">&quot;</span>
+        <span class="n">net_connect</span><span class="o">.</span><span class="n">write_channel</span><span class="p">(</span><span class="n">cmd</span><span class="p">)</span>
+        <span class="n">output</span> <span class="o">=</span> <span class="n">read_device</span><span class="p">(</span><span class="n">net_connect</span><span class="p">,</span> <span class="n">sleep</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="s2">&quot;sername&quot;</span> <span class="ow">in</span> <span class="n">output</span><span class="p">:</span>
+            <span class="n">net_connect</span><span class="o">.</span><span class="n">write_channel</span><span class="p">(</span><span class="n">my_device</span><span class="p">[</span><span class="s2">&quot;username&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">output</span> <span class="o">=</span> <span class="n">read_device</span><span class="p">(</span><span class="n">net_connect</span><span class="p">,</span> <span class="n">sleep</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="s2">&quot;ssword&quot;</span> <span class="ow">in</span> <span class="n">output</span><span class="p">:</span>
+            <span class="n">net_connect</span><span class="o">.</span><span class="n">write_channel</span><span class="p">(</span><span class="n">password</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">read_device</span><span class="p">(</span><span class="n">net_connect</span><span class="p">,</span> <span class="n">sleep</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+        <span class="n">net_connect</span><span class="o">.</span><span class="n">write_channel</span><span class="p">(</span><span class="s2">&quot;exit</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">read_device</span><span class="p">(</span><span class="n">net_connect</span><span class="p">,</span> <span class="n">sleep</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">()</span>
+</code></pre></div>
+
+<h3 id="tb-190-netmiko_courseclass10exercisesmy_hoststxt">TB-190: <code>netmiko_course/class10/exercises/my_hosts.txt</code></h3>
+<p><strong>Lab type:</strong> Python fundamentals lab</p>
+<p><strong>Objective:</strong> It provides command text, sample output, hosts, or notes that another script can consume.</p>
+<p><strong>What to notice:</strong></p>
+<ol>
+<li>This supporting file provides text, templates, commands, or sample output for the scripts.</li>
+</ol>
+<p><strong>Mastery tasks:</strong></p>
+<ul>
+<li>Read the source once without running it. Write one sentence describing its purpose.</li>
+<li>Identify the Python concept from the chapter track that this lab reinforces.</li>
+<li>Explain whether this file is input data, command data, output data, or helper text.</li>
+<li>Write a tiny Python snippet that reads this file and prints the number of non-empty lines.</li>
+</ul>
+<p><strong>Source listing:</strong></p>
+<div class="highlight"><pre><span></span><code>cisco3.lasthop.io
+cisco4.lasthop.io
+nxos1.lasthop.io
+nxos2.lasthop.io
+vmx1.lasthop.io
+vmx2.lasthop.io 
+</code></pre></div>
+
+<h3 id="tb-191-netmiko_courseclass10collateraldetect_platformpy">TB-191: <code>netmiko_course/class10/collateral/detect_platform.py</code></h3>
+<p><strong>Lab type:</strong> Device automation lab</p>
+<p><strong>Objective:</strong> It shows how Python opens an SSH-style network session, sends commands, and then cleans up the connection.</p>
+<p><strong>What to notice:</strong></p>
+<ol>
+<li>First, it brings in helper tools: <code>os, getpass.getpass, netmiko.SSHDetect, netmiko.ConnectHandler</code>.</li>
+<li>Then it gets secrets from the environment or a password prompt, instead of hard-coding them.</li>
+<li>Next, it builds a device connection dictionary and hands it to Netmiko's <code>ConnectHandler</code>.</li>
+<li>It prints something you can see, so you know the script actually ran.</li>
+</ol>
+<p><strong>Mastery tasks:</strong></p>
+<ul>
+<li>Read the source once without running it. Write one sentence describing its purpose.</li>
+<li>Identify the Python concept from the chapter track that this lab reinforces.</li>
+<li>Run it in a safe lab or convert it to a dry run by replacing device calls with <code>print()</code> statements.</li>
+<li>Change exactly one value, predict the result, then run again.</li>
+<li>Mark the exact line where a real network connection begins and list the required safety checks before that line.</li>
+</ul>
+<p><strong>Source listing:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">getpass</span><span class="w"> </span><span class="kn">import</span> <span class="n">getpass</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">netmiko</span><span class="w"> </span><span class="kn">import</span> <span class="n">SSHDetect</span><span class="p">,</span> <span class="n">ConnectHandler</span>
+
+<span class="c1"># Code so automated tests will run properly</span>
+<span class="n">password</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;NETMIKO_PASSWORD&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;NETMIKO_PASSWORD&quot;</span><span class="p">)</span> <span class="k">else</span> <span class="n">getpass</span><span class="p">()</span>
+
+<span class="n">base_device</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;device_type&quot;</span><span class="p">:</span> <span class="s2">&quot;autodetect&quot;</span><span class="p">,</span> <span class="s2">&quot;username&quot;</span><span class="p">:</span> <span class="s2">&quot;pyclass&quot;</span><span class="p">,</span> <span class="s2">&quot;password&quot;</span><span class="p">:</span> <span class="n">password</span><span class="p">}</span>
+
+<span class="n">hosts</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;cisco3.lasthop.io&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;nxos1.lasthop.io&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;vmx1.lasthop.io&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;arista1.lasthop.io&quot;</span><span class="p">,</span>
+<span class="p">]</span>
+
+<span class="k">for</span> <span class="n">hostname</span> <span class="ow">in</span> <span class="n">hosts</span><span class="p">:</span>
+    <span class="n">device</span> <span class="o">=</span> <span class="n">base_device</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">device</span><span class="p">[</span><span class="s2">&quot;host&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">hostname</span>
+    <span class="n">guesser</span> <span class="o">=</span> <span class="n">SSHDetect</span><span class="p">(</span><span class="o">**</span><span class="n">device</span><span class="p">)</span>
+    <span class="n">best_match</span> <span class="o">=</span> <span class="n">guesser</span><span class="o">.</span><span class="n">autodetect</span><span class="p">()</span>
+    <span class="c1"># Name of the best device_type to use further</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">best_match</span><span class="p">)</span>
+
+<span class="c1"># Connect to the very last device</span>
+<span class="n">device</span><span class="p">[</span><span class="s2">&quot;device_type&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">best_match</span>
+<span class="k">with</span> <span class="n">ConnectHandler</span><span class="p">(</span><span class="o">**</span><span class="n">device</span><span class="p">)</span> <span class="k">as</span> <span class="n">connection</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Full SSH Connection:&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">connection</span><span class="o">.</span><span class="n">find_prompt</span><span class="p">())</span>
+</code></pre></div>
+
+<h3 id="tb-192-netmiko_courseclass10collateralsnmp_detectpy">TB-192: <code>netmiko_course/class10/collateral/snmp_detect.py</code></h3>
+<p><strong>Lab type:</strong> Device automation lab</p>
+<p><strong>Objective:</strong> It shows how Python opens an SSH-style network session, sends commands, and then cleans up the connection.</p>
+<p><strong>What to notice:</strong></p>
+<ol>
+<li>First, it brings in helper tools: <code>os, getpass.getpass, netmiko.snmp_autodetect.SNMPDetect</code>.</li>
+<li>Then it gets secrets from the environment or a password prompt, instead of hard-coding them.</li>
+<li>It prints something you can see, so you know the script actually ran.</li>
+</ol>
+<p><strong>Mastery tasks:</strong></p>
+<ul>
+<li>Read the source once without running it. Write one sentence describing its purpose.</li>
+<li>Identify the Python concept from the chapter track that this lab reinforces.</li>
+<li>Run it in a safe lab or convert it to a dry run by replacing device calls with <code>print()</code> statements.</li>
+<li>Change exactly one value, predict the result, then run again.</li>
+</ul>
+<p><strong>Source listing:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">getpass</span><span class="w"> </span><span class="kn">import</span> <span class="n">getpass</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">netmiko.snmp_autodetect</span><span class="w"> </span><span class="kn">import</span> <span class="n">SNMPDetect</span>
+
+<span class="n">snmp_key</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;SNMP_COMMUNITY&quot;</span><span class="p">)</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">snmp_key</span><span class="p">:</span>
+    <span class="n">snmp_key</span> <span class="o">=</span> <span class="n">getpass</span><span class="p">(</span><span class="s2">&quot;Enter SNMP community: &quot;</span><span class="p">)</span>
+
+<span class="c1"># Had to change from a hostname to an IP address due to a Netmiko bug</span>
+<span class="c1"># in the SNMP autodetect code.</span>
+<span class="n">my_snmp</span> <span class="o">=</span> <span class="n">SNMPDetect</span><span class="p">(</span>
+    <span class="s2">&quot;184.105.247.70&quot;</span><span class="p">,</span>
+    <span class="n">snmp_version</span><span class="o">=</span><span class="s2">&quot;v3&quot;</span><span class="p">,</span>
+    <span class="n">user</span><span class="o">=</span><span class="s2">&quot;pysnmp&quot;</span><span class="p">,</span>
+    <span class="n">auth_key</span><span class="o">=</span><span class="n">snmp_key</span><span class="p">,</span>
+    <span class="n">encrypt_key</span><span class="o">=</span><span class="n">snmp_key</span><span class="p">,</span>
+    <span class="n">auth_proto</span><span class="o">=</span><span class="s2">&quot;sha&quot;</span><span class="p">,</span>
+    <span class="n">encrypt_proto</span><span class="o">=</span><span class="s2">&quot;aes128&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">device_type</span> <span class="o">=</span> <span class="n">my_snmp</span><span class="o">.</span><span class="n">autodetect</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="si">{</span><span class="n">device_type</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<h3 id="tb-193-netmiko_courseclass10collateraltelnet_examplepy">TB-193: <code>netmiko_course/class10/collateral/telnet_example.py</code></h3>
+<p><strong>Lab type:</strong> Device automation lab</p>
+<p><strong>Objective:</strong> It shows how Python opens an SSH-style network session, sends commands, and then cleans up the connection.</p>
+<p><strong>What to notice:</strong></p>
+<ol>
+<li>First, it brings in helper tools: <code>os, netmiko.ConnectHandler, getpass.getpass</code>.</li>
+<li>Then it gets secrets from the environment or a password prompt, instead of hard-coding them.</li>
+<li>Next, it builds a device connection dictionary and hands it to Netmiko's <code>ConnectHandler</code>.</li>
+<li>Finally, it disconnects so the network session is not left hanging open.</li>
+<li>It prints something you can see, so you know the script actually ran.</li>
+</ol>
+<p><strong>Mastery tasks:</strong></p>
+<ul>
+<li>Read the source once without running it. Write one sentence describing its purpose.</li>
+<li>Identify the Python concept from the chapter track that this lab reinforces.</li>
+<li>Run it in a safe lab or convert it to a dry run by replacing device calls with <code>print()</code> statements.</li>
+<li>Change exactly one value, predict the result, then run again.</li>
+<li>Mark the exact line where a real network connection begins and list the required safety checks before that line.</li>
+</ul>
+<p><strong>Source listing:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">netmiko</span><span class="w"> </span><span class="kn">import</span> <span class="n">ConnectHandler</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">getpass</span><span class="w"> </span><span class="kn">import</span> <span class="n">getpass</span>
+
+<span class="c1"># Code so automated tests will run properly</span>
+<span class="n">password</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;NETMIKO_PASSWORD&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;NETMIKO_PASSWORD&quot;</span><span class="p">)</span> <span class="k">else</span> <span class="n">getpass</span><span class="p">()</span>
+
+<span class="n">cisco1</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;device_type&quot;</span><span class="p">:</span> <span class="s2">&quot;cisco_ios_telnet&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;host&quot;</span><span class="p">:</span> <span class="s2">&quot;cisco1.lasthop.io&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;username&quot;</span><span class="p">:</span> <span class="s2">&quot;pyclass&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;password&quot;</span><span class="p">:</span> <span class="n">password</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">net_connect</span> <span class="o">=</span> <span class="n">ConnectHandler</span><span class="p">(</span><span class="o">**</span><span class="n">cisco1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">net_connect</span><span class="o">.</span><span class="n">find_prompt</span><span class="p">())</span>
+<span class="n">net_connect</span><span class="o">.</span><span class="n">disconnect</span><span class="p">()</span>
+</code></pre></div>
+
+<h3 id="tb-194-netmiko_courseclass10collateralwrite_readpy">TB-194: <code>netmiko_course/class10/collateral/write_read.py</code></h3>
+<p><strong>Lab type:</strong> Device automation lab</p>
+<p><strong>Objective:</strong> It shows how Python opens an SSH-style network session, sends commands, and then cleans up the connection.</p>
+<p><strong>What to notice:</strong></p>
+<ol>
+<li>First, it brings in helper tools: <code>os, time, getpass.getpass, netmiko.ConnectHandler</code>.</li>
+<li>Then it gets secrets from the environment or a password prompt, instead of hard-coding them.</li>
+<li>Next, it builds a device connection dictionary and hands it to Netmiko's <code>ConnectHandler</code>.</li>
+<li>It prints something you can see, so you know the script actually ran.</li>
+</ol>
+<p><strong>Mastery tasks:</strong></p>
+<ul>
+<li>Read the source once without running it. Write one sentence describing its purpose.</li>
+<li>Identify the Python concept from the chapter track that this lab reinforces.</li>
+<li>Run it in a safe lab or convert it to a dry run by replacing device calls with <code>print()</code> statements.</li>
+<li>Change exactly one value, predict the result, then run again.</li>
+<li>Mark the exact line where a real network connection begins and list the required safety checks before that line.</li>
+</ul>
+<p><strong>Source listing:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">getpass</span><span class="w"> </span><span class="kn">import</span> <span class="n">getpass</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">netmiko</span><span class="w"> </span><span class="kn">import</span> <span class="n">ConnectHandler</span>
+
+<span class="c1"># Code so automated tests will run properly</span>
+<span class="n">password</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;NETMIKO_PASSWORD&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;NETMIKO_PASSWORD&quot;</span><span class="p">)</span> <span class="k">else</span> <span class="n">getpass</span><span class="p">()</span>
+
+<span class="n">my_device</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;device_type&quot;</span><span class="p">:</span> <span class="s2">&quot;arista_eos&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;host&quot;</span><span class="p">:</span> <span class="s2">&quot;arista1.lasthop.io&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;username&quot;</span><span class="p">:</span> <span class="s2">&quot;pyclass&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;password&quot;</span><span class="p">:</span> <span class="n">password</span><span class="p">,</span>
+    <span class="s2">&quot;session_log&quot;</span><span class="p">:</span> <span class="s2">&quot;output.txt&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="k">with</span> <span class="n">ConnectHandler</span><span class="p">(</span><span class="o">**</span><span class="n">my_device</span><span class="p">)</span> <span class="k">as</span> <span class="n">net_connect</span><span class="p">:</span>
+
+    <span class="c1"># Send command down the channel - don&#39;t forget the enter!</span>
+    <span class="n">net_connect</span><span class="o">.</span><span class="n">write_channel</span><span class="p">(</span><span class="s2">&quot;show ip int brief</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="c1"># You probably can&#39;t read right away - your Python program is faster than the device (so sleep)</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">output</span> <span class="o">=</span> <span class="n">net_connect</span><span class="o">.</span><span class="n">read_channel</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">()</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="mi">20</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">()</span>
+
+    <span class="c1"># You can do multiple interactions</span>
+    <span class="n">net_connect</span><span class="o">.</span><span class="n">write_channel</span><span class="p">(</span><span class="s2">&quot;config term</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">output</span> <span class="o">=</span> <span class="n">net_connect</span><span class="o">.</span><span class="n">read_channel</span><span class="p">()</span>
+    <span class="n">net_connect</span><span class="o">.</span><span class="n">write_channel</span><span class="p">(</span><span class="s2">&quot;end</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">output</span> <span class="o">+=</span> <span class="n">net_connect</span><span class="o">.</span><span class="n">read_channel</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+</code></pre></div>
+
+<h3 id="tb-195-python_course_mar26class1exercisesdict_exnet_object_net128json">TB-195: <code>python_course_mar26/class1/exercises/dict_ex/net_object_net128.json</code></h3>
+<p><strong>Lab type:</strong> Data lab</p>
+<p><strong>Objective:</strong> It treats network facts as structured data, so code can look up exact fields instead of reading text by eye.</p>
+<p><strong>What to notice:</strong></p>
+<ol>
+<li>This is data, not a program: it gives Python facts to work with.</li>
+<li>Think of each key as a label on a box and each value as what is inside the box.</li>
+<li>A script can load this file and use the values to decide which devices or commands to handle.</li>
+</ol>
+<p><strong>Mastery tasks:</strong></p>
+<ul>
+<li>Read the source once without running it. Write one sentence describing its purpose.</li>
+<li>Identify the Python concept from the chapter track that this lab reinforces.</li>
+<li>Find the top-level keys and explain what each section represents operationally.</li>
+<li>Add one safe fake device/object and update a script or pseudocode loop to consume it.</li>
+</ul>
+<p><strong>Source listing:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;uid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;6796b2f5-d449-44dc-9cf8-75b33c4ca493&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;hq_net_128&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;network&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;domain&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;uid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;41e821a0-3720-11e3-aa6e-0800200c9fde&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SMC User&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;domain-type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;domain&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;subnet4&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;172.31.128.0&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;mask-length4&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">24</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;subnet-mask&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;255.255.255.0&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;icon&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;NetworkObjects/network&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;color&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;light green&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h3 id="tb-196-python_course_mar26class1exercisesfile_exnetwork_objectsjson">TB-196: <code>python_course_mar26/class1/exercises/file_ex/network_objects.json</code></h3>
+<p><strong>Lab type:</strong> Data lab</p>
+<p><strong>Objective:</strong> It treats network facts as structured data, so code can look up exact fields instead of reading text by eye.</p>
+<p><strong>What to notice:</strong></p>
+<ol>
+<li>This is data, not a program: it gives Python facts to work with.</li>
+<li>Think of each key as a label on a box and each value as what is inside the box.</li>
+<li>A script can load this file and use the values to decide which devices or commands to handle.</li>
+</ol>
+<p><strong>Mastery tasks:</strong></p>
+<ul>
+<li>Read the source once without running it. Write one sentence describing its purpose.</li>
+<li>Identify the Python concept from the chapter track that this lab reinforces.</li>
+<li>Find the top-level keys and explain what each section represents operationally.</li>
+<li>Add one safe fake device/object and update a script or pseudocode loop to consume it.</li>
+</ul>
+<p><strong>Source listing:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;objects&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;uid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;eff32e1a-d4ed-4df9-a6e6-398c5d88b34d&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CP_default_Office_Mode_addresses_pool&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;network&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;domain&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;uid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;41e821a0-3720-11e3-aa6e-0800200c9fde&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SMC User&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;domain-type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;domain&quot;</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="nt">&quot;subnet4&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;172.16.10.0&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;mask-length4&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">24</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;subnet-mask&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;255.255.255.0&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;icon&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;NetworkObjects/network&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;color&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;black&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;uid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;6796b2f5-d449-44dc-9cf8-75b33c4ca493&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;hq_net_128&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;network&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;domain&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;uid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;41e821a0-3720-11e3-aa6e-0800200c9fde&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SMC User&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;domain-type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;domain&quot;</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="nt">&quot;subnet4&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;172.31.128.0&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;mask-length4&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">24</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;subnet-mask&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;255.255.255.0&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;icon&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;NetworkObjects/network&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;color&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;light green&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;uid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;caee1116-8087-4310-9208-b422d3628a7e&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;IPv6_Link_Local_Hosts&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;network&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;domain&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;uid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;a0bbbc99-adef-4ef8-bb6d-defdefdefdef&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Check Point Data&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;domain-type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;data domain&quot;</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="nt">&quot;subnet6&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;fe80::&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;mask-length6&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">64</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;icon&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;NetworkObjects/network&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;color&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;black&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;from&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;to&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;total&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h3 id="tb-197-python_course_mar26class2exercisescomplex_ds_exshow_tasksjson">TB-197: <code>python_course_mar26/class2/exercises/complex_ds_ex/show_tasks.json</code></h3>
+<p><strong>Lab type:</strong> Data lab</p>
+<p><strong>Objective:</strong> It treats network facts as structured data, so code can look up exact fields instead of reading text by eye.</p>
+<p><strong>What to notice:</strong></p>
+<ol>
+<li>This is data, not a program: it gives Python facts to work with.</li>
+<li>Think of each key as a label on a box and each value as what is inside the box.</li>
+<li>A script can load this file and use the values to decide which devices or commands to handle.</li>
+</ol>
+<p><strong>Mastery tasks:</strong></p>
+<ul>
+<li>Read the source once without running it. Write one sentence describing its purpose.</li>
+<li>Identify the Python concept from the chapter track that this lab reinforces.</li>
+<li>Find the top-level keys and explain what each section represents operationally.</li>
+<li>Add one safe fake device/object and update a script or pseudocode loop to consume it.</li>
+</ul>
+<p><strong>Source listing:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;tasks&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;task-id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;d1313671-7c40-4c95-be76-a2ac451705e7&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;task-name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;chkpnt-pod99 - is_ve-CMD&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;succeeded&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;progress-percentage&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;suppressed&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;comments&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Completed&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;meta-info&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;lock&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;unlocked&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;validation-state&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ok&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;last-modify-time&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;posix&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1769728500793</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;iso-8601&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2026-01-30T00:15+0100&quot;</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="nt">&quot;last-modifier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;WEB_API&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;creation-time&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;posix&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1769728500373</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;iso-8601&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2026-01-30T00:15+0100&quot;</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="nt">&quot;creator&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;WEB_API&quot;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;task-id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;37b26077-b9bb-40c7-a522-45ad0bee23c3&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;task-name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Getting information for this software package: all&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;succeeded&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;progress-percentage&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;suppressed&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;comments&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;meta-info&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;lock&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;unlocked&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;validation-state&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ok&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;last-modify-time&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;posix&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1771002543999</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;iso-8601&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2026-02-13T18:09+0100&quot;</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="nt">&quot;last-modifier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;admin&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;creation-time&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;posix&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1771002542681</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;iso-8601&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2026-02-13T18:09+0100&quot;</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="nt">&quot;creator&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;admin&quot;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;task-id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ffb1b55b-1436-40e1-9076-83ebe54b5c68&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;task-name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Trusted CA&#39;s update&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;succeeded&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;progress-percentage&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;suppressed&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;comments&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Trusted CA&#39;s Package has been updated. Please install policy for the changes to take effect&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;meta-info&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;lock&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;unlocked&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;validation-state&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ok&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;last-modify-time&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;posix&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1769648413434</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;iso-8601&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2026-01-29T02:00+0100&quot;</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="nt">&quot;last-modifier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;System&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;creation-time&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;posix&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1769648405040</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;iso-8601&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2026-01-29T02:00+0100&quot;</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="nt">&quot;creator&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;System&quot;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;from&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;to&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;total&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h3 id="tb-198-python_course_mar26class2exercisescomplex_ds_excomplex_ds_ex2py">TB-198: <code>python_course_mar26/class2/exercises/complex_ds_ex/complex_ds_ex2.py</code></h3>
+<p><strong>Lab type:</strong> Python fundamentals lab</p>
+<p><strong>Objective:</strong> It treats network facts as structured data, so code can look up exact fields instead of reading text by eye.</p>
+<p><strong>What to notice:</strong></p>
+<ol>
+<li>First, it brings in helper tools: <code>json, rich.print, ipdb</code>.</li>
+<li>It defines reusable function(s): <code>read_json, extract_fields</code>.</li>
+<li>It reads or writes files, which is how automation remembers inventory, commands, or reports.</li>
+<li>It prints something you can see, so you know the script actually ran.</li>
+</ol>
+<p><strong>Mastery tasks:</strong></p>
+<ul>
+<li>Read the source once without running it. Write one sentence describing its purpose.</li>
+<li>Identify the Python concept from the chapter track that this lab reinforces.</li>
+<li>Run it in a safe lab or convert it to a dry run by replacing device calls with <code>print()</code> statements.</li>
+<li>Change exactly one value, predict the result, then run again.</li>
+</ul>
+<p><strong>Source listing:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">rich</span><span class="w"> </span><span class="kn">import</span> <span class="nb">print</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ipdb</span>  <span class="c1"># noqa</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">read_json</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">data</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">extract_fields</span><span class="p">(</span><span class="n">task</span><span class="p">):</span>
+    <span class="n">task_id</span> <span class="o">=</span> <span class="n">task</span><span class="p">[</span><span class="s2">&quot;task-id&quot;</span><span class="p">]</span>
+    <span class="n">status</span> <span class="o">=</span> <span class="n">task</span><span class="p">[</span><span class="s2">&quot;status&quot;</span><span class="p">]</span>
+    <span class="n">lock</span> <span class="o">=</span> <span class="n">task</span><span class="p">[</span><span class="s2">&quot;meta-info&quot;</span><span class="p">][</span><span class="s2">&quot;lock&quot;</span><span class="p">]</span>
+
+    <span class="k">return</span> <span class="p">(</span><span class="n">task_id</span><span class="p">,</span> <span class="n">status</span><span class="p">,</span> <span class="n">lock</span><span class="p">)</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">filename</span> <span class="o">=</span> <span class="s2">&quot;show_tasks.json&quot;</span>
+    <span class="n">tasks_ds</span> <span class="o">=</span> <span class="n">read_json</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+
+    <span class="c1"># Remove outermost key</span>
+    <span class="n">tasks</span> <span class="o">=</span> <span class="n">tasks_ds</span><span class="p">[</span><span class="s2">&quot;tasks&quot;</span><span class="p">]</span>
+
+    <span class="nb">print</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">task</span> <span class="ow">in</span> <span class="n">tasks</span><span class="p">:</span>
+        <span class="n">task_id</span><span class="p">,</span> <span class="n">status</span><span class="p">,</span> <span class="n">lock</span> <span class="o">=</span> <span class="n">extract_fields</span><span class="p">(</span><span class="n">task</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">task_id</span><span class="si">}</span><span class="s2"> --&gt; </span><span class="si">{</span><span class="n">status</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">lock</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">()</span>
+</code></pre></div>
+
+<h3 id="tb-199-python_course_mar26class1exerciseslist_exlist_ex1py">TB-199: <code>python_course_mar26/class1/exercises/list_ex/list_ex1.py</code></h3>
+<p><strong>Lab type:</strong> Python fundamentals lab</p>
+<p><strong>Objective:</strong> It stores inventory or settings in a human-readable file that scripts can load and reuse.</p>
+<p><strong>What to notice:</strong></p>
+<ol>
+<li>The first line tells Unix-like systems which Python program should run this file.</li>
+<li>First, it brings in helper tools: <code>yaml, rich.print</code>.</li>
+<li>It reads or writes files, which is how automation remembers inventory, commands, or reports.</li>
+<li>It prints something you can see, so you know the script actually ran.</li>
+</ol>
+<p><strong>Mastery tasks:</strong></p>
+<ul>
+<li>Read the source once without running it. Write one sentence describing its purpose.</li>
+<li>Identify the Python concept from the chapter track that this lab reinforces.</li>
+<li>Run it in a safe lab or convert it to a dry run by replacing device calls with <code>print()</code> statements.</li>
+<li>Change exactly one value, predict the result, then run again.</li>
+</ul>
+<p><strong>Source listing:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/env python</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">yaml</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">rich</span><span class="w"> </span><span class="kn">import</span> <span class="nb">print</span>
+
+<span class="n">filename</span> <span class="o">=</span> <span class="s2">&quot;locations.yml&quot;</span>
+
+<span class="c1"># Read in file as YAML</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">locations</span> <span class="o">=</span> <span class="n">yaml</span><span class="o">.</span><span class="n">safe_load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">()</span>
+
+<span class="c1"># Print the list</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">locations</span><span class="p">)</span>
+
+<span class="c1"># Print first element of list</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;First element: </span><span class="si">{</span><span class="n">locations</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Print last element of list</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Last element: </span><span class="si">{</span><span class="n">locations</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Print length of the list</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;List length: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">locations</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Add element to the list</span>
+<span class="n">locations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;Leipzig&quot;</span><span class="p">)</span>
+
+<span class="c1"># Change the fourth element of the list to be &#39;Stuttgart&#39;</span>
+<span class="n">locations</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Stuttgart&quot;</span>
+
+<span class="c1"># Print the current list</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">locations</span><span class="p">)</span>
+
+<span class="c1"># Use list concatentation to add the following list [&quot;Dortmund&quot;, &quot;Essen&quot;]</span>
+<span class="c1"># Could also do: locations += [&quot;Dortmund&quot;, &quot;Essen&quot;]</span>
+<span class="n">locations</span> <span class="o">=</span> <span class="n">locations</span> <span class="o">+</span> <span class="p">[</span><span class="s2">&quot;Dortmund&quot;</span><span class="p">,</span> <span class="s2">&quot;Essen&quot;</span><span class="p">]</span>
+
+<span class="c1"># Print the current list</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">locations</span><span class="p">)</span>
+
+<span class="c1"># Pop the first element of the list into a variable</span>
+<span class="n">city1</span> <span class="o">=</span> <span class="n">locations</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># Pop the last element of the list into a variable</span>
+<span class="n">city_n</span> <span class="o">=</span> <span class="n">locations</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+
+<span class="c1"># Print &#39;city1&#39;, &#39;city_n&#39;, and current &#39;locations&#39; list</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">city1</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">city_n</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">locations</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<h3 id="tb-200-python_course_mar26class2exercisescomplex_ds_excomplex_ds_ex1py">TB-200: <code>python_course_mar26/class2/exercises/complex_ds_ex/complex_ds_ex1.py</code></h3>
+<p><strong>Lab type:</strong> Python fundamentals lab</p>
+<p><strong>Objective:</strong> It treats network facts as structured data, so code can look up exact fields instead of reading text by eye.</p>
+<p><strong>What to notice:</strong></p>
+<ol>
+<li>First, it brings in helper tools: <code>json, rich.print, ipdb</code>.</li>
+<li>It reads or writes files, which is how automation remembers inventory, commands, or reports.</li>
+<li>It prints something you can see, so you know the script actually ran.</li>
+</ol>
+<p><strong>Mastery tasks:</strong></p>
+<ul>
+<li>Read the source once without running it. Write one sentence describing its purpose.</li>
+<li>Identify the Python concept from the chapter track that this lab reinforces.</li>
+<li>Run it in a safe lab or convert it to a dry run by replacing device calls with <code>print()</code> statements.</li>
+<li>Change exactly one value, predict the result, then run again.</li>
+</ul>
+<p><strong>Source listing:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">rich</span><span class="w"> </span><span class="kn">import</span> <span class="nb">print</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ipdb</span>  <span class="c1"># noqa</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;show_tasks.json&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">tasks_ds</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+
+<span class="n">ipdb</span><span class="o">.</span><span class="n">set_trace</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">tasks_ds</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">tasks_ds</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">tasks_ds</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+
+<span class="c1"># Remove outermost key</span>
+<span class="n">tasks</span> <span class="o">=</span> <span class="n">tasks_ds</span><span class="p">[</span><span class="s2">&quot;tasks&quot;</span><span class="p">]</span>
+<span class="n">ipdb</span><span class="o">.</span><span class="n">set_trace</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">tasks</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">tasks</span><span class="p">))</span>
+
+<span class="n">ipdb</span><span class="o">.</span><span class="n">set_trace</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">task</span> <span class="ow">in</span> <span class="n">tasks</span><span class="p">:</span>
+    <span class="n">task_id</span> <span class="o">=</span> <span class="n">task</span><span class="p">[</span><span class="s2">&quot;task-id&quot;</span><span class="p">]</span>
+    <span class="n">status</span> <span class="o">=</span> <span class="n">task</span><span class="p">[</span><span class="s2">&quot;status&quot;</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">task_id</span><span class="si">}</span><span class="s2"> --&gt; </span><span class="si">{</span><span class="n">status</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<h3 id="tb-201-python_course_mar26class1exerciseslist_exlist_ex1md">TB-201: <code>python_course_mar26/class1/exercises/list_ex/list_ex1.md</code></h3>
+<p><strong>Lab type:</strong> Reading and design lab</p>
+<p><strong>Objective:</strong> It stores inventory or settings in a human-readable file that scripts can load and reuse.</p>
+<p><strong>What to notice:</strong></p>
+<ol>
+<li>This is an exercise or explanation file.</li>
+<li>It tells the human what problem to solve before or after running the Python code.</li>
+<li>In the book, this becomes the bridge between the idea and the hands-on network task.</li>
+</ol>
+<p><strong>Mastery tasks:</strong></p>
+<ul>
+<li>Read the source once without running it. Write one sentence describing its purpose.</li>
+<li>Identify the Python concept from the chapter track that this lab reinforces.</li>
+<li>Turn the instructions into a checklist you could follow during a maintenance window.</li>
+<li>Write the smallest script that would support one step in the exercise.</li>
+</ul>
+<p><strong>Source listing:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="gu">### List Exercise1</span>
+
+<span class="k">1.</span> Read in the file &quot;locations.yml&quot; as YAML (this should return a list). Use &#39;yaml.safe_load(f)&#39; to do this.
+<span class="k">2.</span> Print out this list.
+<span class="k">3.</span> Print first element of the list.
+<span class="k">4.</span> Print last element of the list.
+<span class="k">5.</span> Print length of the list.
+<span class="k">6.</span> Append &quot;Leipzig&quot; to the end of the list.
+<span class="k">7.</span> Change the fourth element of the list to be &#39;Stuttgart&#39;.
+<span class="k">8.</span> Print out the current list.
+<span class="k">9.</span> Use list concatentation to add the following list: [&quot;Dortmund&quot;, &quot;Essen&quot;]
+<span class="k">10.</span> Print out the current list.
+<span class="k">11.</span> Pop the first element of the list into a variable named &#39;city1&#39;.
+<span class="k">12.</span> Pop the last element of the list into a variable named &#39;city_n&#39;.
+<span class="k">13.</span> Print out &#39;city1&#39;, &#39;city_n&#39;, and current &#39;locations&#39; list.
+</code></pre></div>
+
+<h3 id="tb-202-python_course_mar26class2exercisescomplex_ds_excomplex_ds_ex1md">TB-202: <code>python_course_mar26/class2/exercises/complex_ds_ex/complex_ds_ex1.md</code></h3>
+<p><strong>Lab type:</strong> Reading and design lab</p>
+<p><strong>Objective:</strong> It treats network facts as structured data, so code can look up exact fields instead of reading text by eye.</p>
+<p><strong>What to notice:</strong></p>
+<ol>
+<li>This is an exercise or explanation file.</li>
+<li>It tells the human what problem to solve before or after running the Python code.</li>
+<li>In the book, this becomes the bridge between the idea and the hands-on network task.</li>
+</ol>
+<p><strong>Mastery tasks:</strong></p>
+<ul>
+<li>Read the source once without running it. Write one sentence describing its purpose.</li>
+<li>Identify the Python concept from the chapter track that this lab reinforces.</li>
+<li>Turn the instructions into a checklist you could follow during a maintenance window.</li>
+<li>Write the smallest script that would support one step in the exercise.</li>
+</ul>
+<p><strong>Source listing:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="gu">### Complex Data Structures Exercise1</span>
+
+Read &quot;show_tasks.json&quot; as JSON and save this data as a variable named &#39;tasks_ds&#39;.
+
+Use ipdb and ipdb.set_trace() and print &#39;tasks_ds&#39;, print &#39;type(tasks_ds)&#39;, and print &#39;tasks_ds.keys()&#39;.
+
+Next drill into the &#39;tasks_ds&#39; data structure one-level and retrieve the &quot;tasks&quot; key; save this as a new variable named &#39;tasks&#39;. In other words: tasks = tasks_ds[&quot;tasks&quot;].
+
+As this point the &#39;tasks&#39; variable should be a list. Verify this by using &#39;type(tasks)&#39; and &#39;len(tasks)&#39;.
+
+Use a for-loop to loop over the &#39;tasks&#39;. Each entry in the &#39;tasks&#39; list will be a task-dictionary. From this inner dictionary retrieve the &quot;task-id&quot; and &quot;status&quot; fields.
+
+Your loop code should look similar to the following:
+
+&#39;&#39;&#39;python
+for task in tasks:
+    task_id = task[&quot;task-id&quot;]
+    status = task[&quot;status&quot;]
+    print(f&quot;{task_id} --&gt; {status}&quot;)
+&#39;&#39;&#39;
+</code></pre></div>
+
+<hr>
+        <div class="chapter-nav-footer"><a class="nav-btn prev" href="lab-track-15.html">← Lab Track 15</a><a class="nav-btn next" href="lab-track-17.html">Lab Track 17 →</a></div>
+      </article>
+    </main>
+    <aside class="sidebar-right">
+      <div class="toc-label">On This Page</div>
+<ol class="page-toc">
+<li class=""><a href="#lab-track-16-inventories-yaml-json-and-real-world-data_1">Lab Track 16: Inventories, YAML, JSON, and Real-World Data</a></li>
+<li class="sub"><a href="#tb-186-netmiko_courseclass10exercisesdevicesyaml">TB-186: netmiko_course/class10/exercises/devices.yaml</a></li>
+<li class="sub"><a href="#tb-187-netmiko_courseclass10exercisesexercise2py">TB-187: netmiko_course/class10/exercises/exercise2.py</a></li>
+<li class="sub"><a href="#tb-188-netmiko_courseclass10exercisesexercise1py">TB-188: netmiko_course/class10/exercises/exercise1.py</a></li>
+<li class="sub"><a href="#tb-189-netmiko_courseclass10exercisesexercise3py">TB-189: netmiko_course/class10/exercises/exercise3.py</a></li>
+<li class="sub"><a href="#tb-190-netmiko_courseclass10exercisesmy_hoststxt">TB-190: netmiko_course/class10/exercises/my_hosts.txt</a></li>
+<li class="sub"><a href="#tb-191-netmiko_courseclass10collateraldetect_platformpy">TB-191: netmiko_course/class10/collateral/detect_platform.py</a></li>
+<li class="sub"><a href="#tb-192-netmiko_courseclass10collateralsnmp_detectpy">TB-192: netmiko_course/class10/collateral/snmp_detect.py</a></li>
+<li class="sub"><a href="#tb-193-netmiko_courseclass10collateraltelnet_examplepy">TB-193: netmiko_course/class10/collateral/telnet_example.py</a></li>
+<li class="sub"><a href="#tb-194-netmiko_courseclass10collateralwrite_readpy">TB-194: netmiko_course/class10/collateral/write_read.py</a></li>
+<li class="sub"><a href="#tb-195-python_course_mar26class1exercisesdict_exnet_object_net128json">TB-195: python_course_mar26/class1/exercises/dict_ex/net_object_net128.json</a></li>
+<li class="sub"><a href="#tb-196-python_course_mar26class1exercisesfile_exnetwork_objectsjson">TB-196: python_course_mar26/class1/exercises/file_ex/network_objects.json</a></li>
+<li class="sub"><a href="#tb-197-python_course_mar26class2exercisescomplex_ds_exshow_tasksjson">TB-197: python_course_mar26/class2/exercises/complex_ds_ex/show_tasks.json</a></li>
+<li class="sub"><a href="#tb-198-python_course_mar26class2exercisescomplex_ds_excomplex_ds_ex2py">TB-198: python_course_mar26/class2/exercises/complex_ds_ex/complex_ds_ex2.py</a></li>
+<li class="sub"><a href="#tb-199-python_course_mar26class1exerciseslist_exlist_ex1py">TB-199: python_course_mar26/class1/exercises/list_ex/list_ex1.py</a></li>
+<li class="sub"><a href="#tb-200-python_course_mar26class2exercisescomplex_ds_excomplex_ds_ex1py">TB-200: python_course_mar26/class2/exercises/complex_ds_ex/complex_ds_ex1.py</a></li>
+<li class="sub"><a href="#tb-201-python_course_mar26class1exerciseslist_exlist_ex1md">TB-201: python_course_mar26/class1/exercises/list_ex/list_ex1.md</a></li>
+<li class="sub"><a href="#tb-202-python_course_mar26class2exercisescomplex_ds_excomplex_ds_ex1md">TB-202: python_course_mar26/class2/exercises/complex_ds_ex/complex_ds_ex1.md</a></li>
+</ol>
+    </aside>
+  </div>
+  <script src="assets/book.js"></script>
+</body>
+</html>

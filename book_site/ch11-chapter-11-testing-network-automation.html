@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Chapter 11: Testing Network Automation | Python Network Automation Crash Course</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/book.css">
+</head>
+<body>
+  <nav class="site-nav">
+    <a class="nav-logo" href="index.html">Python Network Automation <span class="logo-badge">Book</span></a>
+    <div class="nav-actions">
+      <a href="part-iii-labs.html">Labs</a>
+      <a href="references.html">References</a>
+      <button class="theme-toggle" data-theme-toggle type="button">Dark</button>
+    </div>
+  </nav>
+  <div class="page-layout">
+    <aside class="sidebar-left">
+      <div class="toc-label">Start</div>
+<ol class="chapter-list">
+<li><a class="" href="index.html"><span>Home</span><small>Python Network Automation Crash Course</small></a></li>
+<li><a class="" href="introduction.html"><span>Introduction</span><small>Introduction: The Evolution You Cannot Ignore</small></a></li>
+</ol>
+<div class="toc-label">Chapters</div>
+<ol class="chapter-list">
+<li><a class="" href="ch01-chapter-1-getting-started-in-a-network-lab.html"><span>Ch 1</span><small>Chapter 1: Getting Started in a Network Lab</small></a></li>
+<li><a class="" href="ch02-chapter-2-variables-strings-and-device-facts.html"><span>Ch 2</span><small>Chapter 2: Variables, Strings, and Device Facts</small></a></li>
+<li><a class="" href="ch03-chapter-3-introducing-device-lists.html"><span>Ch 3</span><small>Chapter 3: Introducing Device Lists</small></a></li>
+<li><a class="" href="ch04-chapter-4-working-through-networks-with-loops.html"><span>Ch 4</span><small>Chapter 4: Working Through Networks with Loops</small></a></li>
+<li><a class="" href="ch05-chapter-5-if-statements-for-network-decisions.html"><span>Ch 5</span><small>Chapter 5: If Statements for Network Decisions</small></a></li>
+<li><a class="" href="ch06-chapter-6-dictionaries-for-device-inventory.html"><span>Ch 6</span><small>Chapter 6: Dictionaries for Device Inventory</small></a></li>
+<li><a class="" href="ch07-chapter-7-operator-input-and-while-loops.html"><span>Ch 7</span><small>Chapter 7: Operator Input and While Loops</small></a></li>
+<li><a class="" href="ch08-chapter-8-functions-for-reusable-automation.html"><span>Ch 8</span><small>Chapter 8: Functions for Reusable Automation</small></a></li>
+<li><a class="" href="ch09-chapter-9-classes-for-devices-and-sessions.html"><span>Ch 9</span><small>Chapter 9: Classes for Devices and Sessions</small></a></li>
+<li><a class="" href="ch10-chapter-10-files-exceptions-and-network-data.html"><span>Ch 10</span><small>Chapter 10: Files, Exceptions, and Network Data</small></a></li>
+<li><a class="active" href="ch11-chapter-11-testing-network-automation.html"><span>Ch 11</span><small>Chapter 11: Testing Network Automation</small></a></li>
+<li><a class="" href="part-ii-network-automation.html"><span>Part II</span><small>Part II: Applying Python to Network Automation</small></a></li>
+<li><a class="" href="ch12-chapter-12-netmiko-sshing-to-your-network-at-python-sp.html"><span>Ch 12</span><small>Chapter 12: Netmiko: SSHing to Your Network at Python Speed</small></a></li>
+<li><a class="" href="ch13-chapter-13-multi-device-automation-and-file-driven-inv.html"><span>Ch 13</span><small>Chapter 13: Multi-Device Automation and File-Driven Inventory</small></a></li>
+<li><a class="" href="ch14-chapter-14-production-scripts-exceptions-env-vars-and-.html"><span>Ch 14</span><small>Chapter 14: Production Scripts: Exceptions, Env Vars, and Show Commands</small></a></li>
+<li><a class="" href="ch15-chapter-15-automated-backup-and-inventory-reports.html"><span>Ch 15</span><small>Chapter 15: Automated Backup and Inventory Reports</small></a></li>
+</ol>
+<div class="toc-label">Labs</div>
+<ol class="chapter-list">
+<li><a class="" href="part-iii-labs.html"><span>Part III Labs</span><small>Part III: Twin-Bridges Mastery Lab Workbook</small></a></li>
+<li><a class="" href="lab-track-01.html"><span>Lab Track 1</span><small>Lab Track 1: Getting Started in a Network Lab</small></a></li>
+<li><a class="" href="lab-track-02.html"><span>Lab Track 2</span><small>Lab Track 2: Variables, Strings, and Device Facts</small></a></li>
+<li><a class="" href="lab-track-03.html"><span>Lab Track 3</span><small>Lab Track 3: Introducing Device Lists</small></a></li>
+<li><a class="" href="lab-track-04.html"><span>Lab Track 4</span><small>Lab Track 4: Working Through Networks with Loops</small></a></li>
+<li><a class="" href="lab-track-05.html"><span>Lab Track 5</span><small>Lab Track 5: If Statements for Network Decisions</small></a></li>
+<li><a class="" href="lab-track-06.html"><span>Lab Track 6</span><small>Lab Track 6: Dictionaries for Device Inventory</small></a></li>
+<li><a class="" href="lab-track-07.html"><span>Lab Track 7</span><small>Lab Track 7: Operator Input and While Loops</small></a></li>
+<li><a class="" href="lab-track-08.html"><span>Lab Track 8</span><small>Lab Track 8: Functions for Reusable Automation</small></a></li>
+<li><a class="" href="lab-track-09.html"><span>Lab Track 9</span><small>Lab Track 9: Classes for Devices and Sessions</small></a></li>
+<li><a class="" href="lab-track-10.html"><span>Lab Track 10</span><small>Lab Track 10: Files, Exceptions, and Network Data</small></a></li>
+<li><a class="" href="lab-track-11.html"><span>Lab Track 11</span><small>Lab Track 11: Testing Network Automation</small></a></li>
+<li><a class="" href="lab-track-12.html"><span>Lab Track 12</span><small>Lab Track 12: Starting a Netmiko Project</small></a></li>
+<li><a class="" href="lab-track-13.html"><span>Lab Track 13</span><small>Lab Track 13: Collecting Show Commands Across a Fleet</small></a></li>
+<li><a class="" href="lab-track-14.html"><span>Lab Track 14</span><small>Lab Track 14: Configuration, Validation, and Rollback Thinking</small></a></li>
+<li><a class="" href="lab-track-15.html"><span>Lab Track 15</span><small>Lab Track 15: Generating Network Reports</small></a></li>
+<li><a class="" href="lab-track-16.html"><span>Lab Track 16</span><small>Lab Track 16: Inventories, YAML, JSON, and Real-World Data</small></a></li>
+<li><a class="" href="lab-track-17.html"><span>Lab Track 17</span><small>Lab Track 17: Network APIs</small></a></li>
+<li><a class="" href="lab-track-18.html"><span>Lab Track 18</span><small>Lab Track 18: Building a Network Automation Tool</small></a></li>
+<li><a class="" href="lab-track-19.html"><span>Lab Track 19</span><small>Lab Track 19: Credentials, Ownership, and Guardrails</small></a></li>
+<li><a class="" href="lab-track-20.html"><span>Lab Track 20</span><small>Lab Track 20: Operating and Deploying Automation</small></a></li>
+</ol>
+<div class="toc-label">Back Matter</div>
+<ol class="chapter-list">
+<li><a class="" href="references.html"><span>References</span><small>References</small></a></li>
+</ol>
+    </aside>
+    <main class="main-content">
+      <article class="article-shell">
+        <div class="article-meta">Chapters · Ch 11</div>
+        <h1 id="chapter-11-testing-network-automation">Chapter 11: Testing Network Automation</h1>
+<h2 id="what-this-chapter-teaches">What This Chapter Teaches</h2>
+<p>Tests prove that code behaves the way you expect.</p>
+<p>Classic beginner function:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_formatted_name</span><span class="p">(</span><span class="n">first</span><span class="p">,</span> <span class="n">last</span><span class="p">):</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">first</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">last</span><span class="si">}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">title</span><span class="p">()</span>
+</code></pre></div>
+
+<p>Classic test idea:</p>
+<div class="highlight"><pre><span></span><code><span class="k">assert</span> <span class="n">get_formatted_name</span><span class="p">(</span><span class="s2">&quot;ada&quot;</span><span class="p">,</span> <span class="s2">&quot;lovelace&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;Ada Lovelace&quot;</span>
+</code></pre></div>
+
+<p>Network equivalent:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">build_vlan_commands</span><span class="p">(</span><span class="n">vlan_id</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;vlan </span><span class="si">{</span><span class="n">vlan_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;name </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">]</span>
+
+<span class="k">assert</span> <span class="n">build_vlan_commands</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="s2">&quot;USERS&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="p">[</span><span class="s2">&quot;vlan 20&quot;</span><span class="p">,</span> <span class="s2">&quot;name USERS&quot;</span><span class="p">]</span>
+</code></pre></div>
+
+<p>Testing matters more in network automation than in many beginner projects
+because mistakes can affect real infrastructure.</p>
+<h2 id="test-the-logic-before-the-network">Test the Logic Before the Network</h2>
+<p>Do not start by testing SSH to a real device. Start by testing pure Python
+logic:</p>
+<ul>
+<li>command builders</li>
+<li>input validators</li>
+<li>parsers</li>
+<li>inventory checks</li>
+<li>report formatters</li>
+</ul>
+<p>These tests do not need a network.</p>
+<h2 id="testing-a-vlan-validator">Testing a VLAN Validator</h2>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">valid_vlan</span><span class="p">(</span><span class="n">vlan_id</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mi">1</span> <span class="o">&lt;=</span> <span class="n">vlan_id</span> <span class="o">&lt;=</span> <span class="mi">4094</span>
+
+
+<span class="k">assert</span> <span class="n">valid_vlan</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">valid_vlan</span><span class="p">(</span><span class="mi">4094</span><span class="p">)</span>
+<span class="k">assert</span> <span class="ow">not</span> <span class="n">valid_vlan</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="k">assert</span> <span class="ow">not</span> <span class="n">valid_vlan</span><span class="p">(</span><span class="mi">5000</span><span class="p">)</span>
+</code></pre></div>
+
+<p>If the script finishes silently, the assertions passed.</p>
+<h2 id="testing-required-device-keys">Testing Required Device Keys</h2>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">has_required_keys</span><span class="p">(</span><span class="n">device</span><span class="p">):</span>
+    <span class="n">required</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;hostname&quot;</span><span class="p">,</span> <span class="s2">&quot;mgmt_ip&quot;</span><span class="p">,</span> <span class="s2">&quot;platform&quot;</span><span class="p">}</span>
+    <span class="k">return</span> <span class="n">required</span><span class="o">.</span><span class="n">issubset</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+
+
+<span class="n">good_device</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;hostname&quot;</span><span class="p">:</span> <span class="s2">&quot;edge-sw1&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;mgmt_ip&quot;</span><span class="p">:</span> <span class="s2">&quot;192.0.2.10&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;platform&quot;</span><span class="p">:</span> <span class="s2">&quot;cisco_ios&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">bad_device</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;hostname&quot;</span><span class="p">:</span> <span class="s2">&quot;edge-sw2&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="k">assert</span> <span class="n">has_required_keys</span><span class="p">(</span><span class="n">good_device</span><span class="p">)</span>
+<span class="k">assert</span> <span class="ow">not</span> <span class="n">has_required_keys</span><span class="p">(</span><span class="n">bad_device</span><span class="p">)</span>
+</code></pre></div>
+
+<p>This protects later Netmiko code. If a device dictionary is missing required
+fields, fail early before trying to connect.</p>
+<h2 id="testing-a-parser">Testing a Parser</h2>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">interface_is_up</span><span class="p">(</span><span class="n">status</span><span class="p">,</span> <span class="n">protocol</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">status</span> <span class="o">==</span> <span class="s2">&quot;up&quot;</span> <span class="ow">and</span> <span class="n">protocol</span> <span class="o">==</span> <span class="s2">&quot;up&quot;</span>
+
+
+<span class="k">assert</span> <span class="n">interface_is_up</span><span class="p">(</span><span class="s2">&quot;up&quot;</span><span class="p">,</span> <span class="s2">&quot;up&quot;</span><span class="p">)</span>
+<span class="k">assert</span> <span class="ow">not</span> <span class="n">interface_is_up</span><span class="p">(</span><span class="s2">&quot;administratively down&quot;</span><span class="p">,</span> <span class="s2">&quot;down&quot;</span><span class="p">)</span>
+<span class="k">assert</span> <span class="ow">not</span> <span class="n">interface_is_up</span><span class="p">(</span><span class="s2">&quot;up&quot;</span><span class="p">,</span> <span class="s2">&quot;down&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Small tests like this make bigger scripts safer.</p>
+<h2 id="lab-create-a-test-file">Lab: Create a Test File</h2>
+<p>Create <code>chapter_11_tests.py</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">build_show_command</span><span class="p">(</span><span class="n">interface</span><span class="p">):</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;show running-config interface </span><span class="si">{</span><span class="n">interface</span><span class="si">}</span><span class="s2">&quot;</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">valid_vlan</span><span class="p">(</span><span class="n">vlan_id</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mi">1</span> <span class="o">&lt;=</span> <span class="n">vlan_id</span> <span class="o">&lt;=</span> <span class="mi">4094</span>
+
+
+<span class="k">assert</span> <span class="n">build_show_command</span><span class="p">(</span><span class="s2">&quot;Vlan20&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;show running-config interface Vlan20&quot;</span>
+<span class="k">assert</span> <span class="n">valid_vlan</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+<span class="k">assert</span> <span class="ow">not</span> <span class="n">valid_vlan</span><span class="p">(</span><span class="mi">5000</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;All tests passed.&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Run it:</p>
+<div class="highlight"><pre><span></span><code>python chapter_11_tests.py
+</code></pre></div>
+
+<p>Then intentionally break one expected value and run it again. Read the failure.
+Learning to read test failures is part of learning to trust automation.</p>
+<h2 id="chapter-11-review">Chapter 11 Review</h2>
+<p>You learned:</p>
+<ul>
+<li>Tests check expected behavior.</li>
+<li><code>assert</code> is a simple way to start testing.</li>
+<li>Test pure Python logic before testing real network access.</li>
+<li>Validators, command builders, and parsers are excellent first test targets.</li>
+<li>Good tests create confidence before change windows.</li>
+</ul>
+<hr>
+        <div class="chapter-nav-footer"><a class="nav-btn prev" href="ch10-chapter-10-files-exceptions-and-network-data.html">← Ch 10</a><a class="nav-btn next" href="part-ii-network-automation.html">Part II →</a></div>
+      </article>
+    </main>
+    <aside class="sidebar-right">
+      <div class="toc-label">On This Page</div>
+<ol class="page-toc">
+<li class=""><a href="#what-this-chapter-teaches">What This Chapter Teaches</a></li>
+<li class=""><a href="#test-the-logic-before-the-network">Test the Logic Before the Network</a></li>
+<li class=""><a href="#testing-a-vlan-validator">Testing a VLAN Validator</a></li>
+<li class=""><a href="#testing-required-device-keys">Testing Required Device Keys</a></li>
+<li class=""><a href="#testing-a-parser">Testing a Parser</a></li>
+<li class=""><a href="#lab-create-a-test-file">Lab: Create a Test File</a></li>
+<li class=""><a href="#chapter-11-review">Chapter 11 Review</a></li>
+</ol>
+    </aside>
+  </div>
+  <script src="assets/book.js"></script>
+</body>
+</html>

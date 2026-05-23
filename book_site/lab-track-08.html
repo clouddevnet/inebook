@@ -1,0 +1,600 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lab Track 8: Functions for Reusable Automation | Python Network Automation Crash Course</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/book.css">
+</head>
+<body>
+  <nav class="site-nav">
+    <a class="nav-logo" href="index.html">Python Network Automation <span class="logo-badge">Book</span></a>
+    <div class="nav-actions">
+      <a href="part-iii-labs.html">Labs</a>
+      <a href="references.html">References</a>
+      <button class="theme-toggle" data-theme-toggle type="button">Dark</button>
+    </div>
+  </nav>
+  <div class="page-layout">
+    <aside class="sidebar-left">
+      <div class="toc-label">Start</div>
+<ol class="chapter-list">
+<li><a class="" href="index.html"><span>Home</span><small>Python Network Automation Crash Course</small></a></li>
+<li><a class="" href="introduction.html"><span>Introduction</span><small>Introduction: The Evolution You Cannot Ignore</small></a></li>
+</ol>
+<div class="toc-label">Chapters</div>
+<ol class="chapter-list">
+<li><a class="" href="ch01-chapter-1-getting-started-in-a-network-lab.html"><span>Ch 1</span><small>Chapter 1: Getting Started in a Network Lab</small></a></li>
+<li><a class="" href="ch02-chapter-2-variables-strings-and-device-facts.html"><span>Ch 2</span><small>Chapter 2: Variables, Strings, and Device Facts</small></a></li>
+<li><a class="" href="ch03-chapter-3-introducing-device-lists.html"><span>Ch 3</span><small>Chapter 3: Introducing Device Lists</small></a></li>
+<li><a class="" href="ch04-chapter-4-working-through-networks-with-loops.html"><span>Ch 4</span><small>Chapter 4: Working Through Networks with Loops</small></a></li>
+<li><a class="" href="ch05-chapter-5-if-statements-for-network-decisions.html"><span>Ch 5</span><small>Chapter 5: If Statements for Network Decisions</small></a></li>
+<li><a class="" href="ch06-chapter-6-dictionaries-for-device-inventory.html"><span>Ch 6</span><small>Chapter 6: Dictionaries for Device Inventory</small></a></li>
+<li><a class="" href="ch07-chapter-7-operator-input-and-while-loops.html"><span>Ch 7</span><small>Chapter 7: Operator Input and While Loops</small></a></li>
+<li><a class="" href="ch08-chapter-8-functions-for-reusable-automation.html"><span>Ch 8</span><small>Chapter 8: Functions for Reusable Automation</small></a></li>
+<li><a class="" href="ch09-chapter-9-classes-for-devices-and-sessions.html"><span>Ch 9</span><small>Chapter 9: Classes for Devices and Sessions</small></a></li>
+<li><a class="" href="ch10-chapter-10-files-exceptions-and-network-data.html"><span>Ch 10</span><small>Chapter 10: Files, Exceptions, and Network Data</small></a></li>
+<li><a class="" href="ch11-chapter-11-testing-network-automation.html"><span>Ch 11</span><small>Chapter 11: Testing Network Automation</small></a></li>
+<li><a class="" href="part-ii-network-automation.html"><span>Part II</span><small>Part II: Applying Python to Network Automation</small></a></li>
+<li><a class="" href="ch12-chapter-12-netmiko-sshing-to-your-network-at-python-sp.html"><span>Ch 12</span><small>Chapter 12: Netmiko: SSHing to Your Network at Python Speed</small></a></li>
+<li><a class="" href="ch13-chapter-13-multi-device-automation-and-file-driven-inv.html"><span>Ch 13</span><small>Chapter 13: Multi-Device Automation and File-Driven Inventory</small></a></li>
+<li><a class="" href="ch14-chapter-14-production-scripts-exceptions-env-vars-and-.html"><span>Ch 14</span><small>Chapter 14: Production Scripts: Exceptions, Env Vars, and Show Commands</small></a></li>
+<li><a class="" href="ch15-chapter-15-automated-backup-and-inventory-reports.html"><span>Ch 15</span><small>Chapter 15: Automated Backup and Inventory Reports</small></a></li>
+</ol>
+<div class="toc-label">Labs</div>
+<ol class="chapter-list">
+<li><a class="" href="part-iii-labs.html"><span>Part III Labs</span><small>Part III: Twin-Bridges Mastery Lab Workbook</small></a></li>
+<li><a class="" href="lab-track-01.html"><span>Lab Track 1</span><small>Lab Track 1: Getting Started in a Network Lab</small></a></li>
+<li><a class="" href="lab-track-02.html"><span>Lab Track 2</span><small>Lab Track 2: Variables, Strings, and Device Facts</small></a></li>
+<li><a class="" href="lab-track-03.html"><span>Lab Track 3</span><small>Lab Track 3: Introducing Device Lists</small></a></li>
+<li><a class="" href="lab-track-04.html"><span>Lab Track 4</span><small>Lab Track 4: Working Through Networks with Loops</small></a></li>
+<li><a class="" href="lab-track-05.html"><span>Lab Track 5</span><small>Lab Track 5: If Statements for Network Decisions</small></a></li>
+<li><a class="" href="lab-track-06.html"><span>Lab Track 6</span><small>Lab Track 6: Dictionaries for Device Inventory</small></a></li>
+<li><a class="" href="lab-track-07.html"><span>Lab Track 7</span><small>Lab Track 7: Operator Input and While Loops</small></a></li>
+<li><a class="active" href="lab-track-08.html"><span>Lab Track 8</span><small>Lab Track 8: Functions for Reusable Automation</small></a></li>
+<li><a class="" href="lab-track-09.html"><span>Lab Track 9</span><small>Lab Track 9: Classes for Devices and Sessions</small></a></li>
+<li><a class="" href="lab-track-10.html"><span>Lab Track 10</span><small>Lab Track 10: Files, Exceptions, and Network Data</small></a></li>
+<li><a class="" href="lab-track-11.html"><span>Lab Track 11</span><small>Lab Track 11: Testing Network Automation</small></a></li>
+<li><a class="" href="lab-track-12.html"><span>Lab Track 12</span><small>Lab Track 12: Starting a Netmiko Project</small></a></li>
+<li><a class="" href="lab-track-13.html"><span>Lab Track 13</span><small>Lab Track 13: Collecting Show Commands Across a Fleet</small></a></li>
+<li><a class="" href="lab-track-14.html"><span>Lab Track 14</span><small>Lab Track 14: Configuration, Validation, and Rollback Thinking</small></a></li>
+<li><a class="" href="lab-track-15.html"><span>Lab Track 15</span><small>Lab Track 15: Generating Network Reports</small></a></li>
+<li><a class="" href="lab-track-16.html"><span>Lab Track 16</span><small>Lab Track 16: Inventories, YAML, JSON, and Real-World Data</small></a></li>
+<li><a class="" href="lab-track-17.html"><span>Lab Track 17</span><small>Lab Track 17: Network APIs</small></a></li>
+<li><a class="" href="lab-track-18.html"><span>Lab Track 18</span><small>Lab Track 18: Building a Network Automation Tool</small></a></li>
+<li><a class="" href="lab-track-19.html"><span>Lab Track 19</span><small>Lab Track 19: Credentials, Ownership, and Guardrails</small></a></li>
+<li><a class="" href="lab-track-20.html"><span>Lab Track 20</span><small>Lab Track 20: Operating and Deploying Automation</small></a></li>
+</ol>
+<div class="toc-label">Back Matter</div>
+<ol class="chapter-list">
+<li><a class="" href="references.html"><span>References</span><small>References</small></a></li>
+</ol>
+    </aside>
+    <main class="main-content">
+      <article class="article-shell">
+        <div class="article-meta">Labs · Lab Track 8</div>
+        <h1 id="lab-track-8-functions-for-reusable-automation">Lab Track 8: Functions for Reusable Automation</h1>
+<h2 id="lab-track-8-functions-for-reusable-automation_1">Lab Track 8: Functions for Reusable Automation</h2>
+<p><strong>Concept focus:</strong> turn repeated checks, command builders, and parsers into functions.</p>
+<p><strong>Mental model:</strong> <code>arguments -&gt; function body -&gt; return/report -&gt; reuse across devices</code></p>
+<h3 id="tb-057-python_course_mar26class1functionsfunc_ex1py">TB-057: <code>python_course_mar26/class1/functions/func_ex1.py</code></h3>
+<p><strong>Lab type:</strong> Python fundamentals lab</p>
+<p><strong>Objective:</strong> It wraps repeated network work in functions, so the same idea can be reused safely.</p>
+<p><strong>What to notice:</strong></p>
+<ol>
+<li>It defines reusable function(s): <code>my_func</code>.</li>
+<li>It prints something you can see, so you know the script actually ran.</li>
+</ol>
+<p><strong>Mastery tasks:</strong></p>
+<ul>
+<li>Read the source once without running it. Write one sentence describing its purpose.</li>
+<li>Identify the Python concept from the chapter track that this lab reinforces.</li>
+<li>Run it in a safe lab or convert it to a dry run by replacing device calls with <code>print()</code> statements.</li>
+<li>Change exactly one value, predict the result, then run again.</li>
+</ul>
+<p><strong>Source listing:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">my_func</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+
+
+<span class="n">ret_val</span> <span class="o">=</span> <span class="n">my_func</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">ret_val</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<h3 id="tb-058-python_course_mar26class1functionsfunc_ex2py">TB-058: <code>python_course_mar26/class1/functions/func_ex2.py</code></h3>
+<p><strong>Lab type:</strong> Python fundamentals lab</p>
+<p><strong>Objective:</strong> It wraps repeated network work in functions, so the same idea can be reused safely.</p>
+<p><strong>What to notice:</strong></p>
+<ol>
+<li>It defines reusable function(s): <code>my_func</code>.</li>
+<li>It prints something you can see, so you know the script actually ran.</li>
+</ol>
+<p><strong>Mastery tasks:</strong></p>
+<ul>
+<li>Read the source once without running it. Write one sentence describing its purpose.</li>
+<li>Identify the Python concept from the chapter track that this lab reinforces.</li>
+<li>Run it in a safe lab or convert it to a dry run by replacing device calls with <code>print()</code> statements.</li>
+<li>Change exactly one value, predict the result, then run again.</li>
+</ul>
+<p><strong>Source listing:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">my_func</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">x</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">y</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+
+
+<span class="nb">print</span><span class="p">()</span>
+<span class="n">ret_val</span> <span class="o">=</span> <span class="n">my_func</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">ret_val</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">()</span>
+<span class="n">ret_val</span> <span class="o">=</span> <span class="n">my_func</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">ret_val</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<h3 id="tb-059-python_course_mar26class1functionsfunc_ex3py">TB-059: <code>python_course_mar26/class1/functions/func_ex3.py</code></h3>
+<p><strong>Lab type:</strong> Python fundamentals lab</p>
+<p><strong>Objective:</strong> It wraps repeated network work in functions, so the same idea can be reused safely.</p>
+<p><strong>What to notice:</strong></p>
+<ol>
+<li>It defines reusable function(s): <code>my_func</code>.</li>
+<li>It prints something you can see, so you know the script actually ran.</li>
+</ol>
+<p><strong>Mastery tasks:</strong></p>
+<ul>
+<li>Read the source once without running it. Write one sentence describing its purpose.</li>
+<li>Identify the Python concept from the chapter track that this lab reinforces.</li>
+<li>Run it in a safe lab or convert it to a dry run by replacing device calls with <code>print()</code> statements.</li>
+<li>Change exactly one value, predict the result, then run again.</li>
+</ul>
+<p><strong>Source listing:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">my_func</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="mi">100</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">x</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">y</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">z</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span> <span class="o">+</span> <span class="n">z</span>
+
+
+<span class="n">ret_val</span> <span class="o">=</span> <span class="n">my_func</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">ret_val</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<h3 id="tb-060-python_course_mar26class1functionsfunc_ex4py">TB-060: <code>python_course_mar26/class1/functions/func_ex4.py</code></h3>
+<p><strong>Lab type:</strong> Python fundamentals lab</p>
+<p><strong>Objective:</strong> It wraps repeated network work in functions, so the same idea can be reused safely.</p>
+<p><strong>What to notice:</strong></p>
+<ol>
+<li>It defines reusable function(s): <code>my_func</code>.</li>
+<li>It prints something you can see, so you know the script actually ran.</li>
+</ol>
+<p><strong>Mastery tasks:</strong></p>
+<ul>
+<li>Read the source once without running it. Write one sentence describing its purpose.</li>
+<li>Identify the Python concept from the chapter track that this lab reinforces.</li>
+<li>Run it in a safe lab or convert it to a dry run by replacing device calls with <code>print()</code> statements.</li>
+<li>Change exactly one value, predict the result, then run again.</li>
+</ul>
+<p><strong>Source listing:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">my_func</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="mi">100</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">x</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">y</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">z</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span> <span class="o">+</span> <span class="n">z</span>
+
+
+<span class="n">my_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">99</span><span class="p">]</span>
+<span class="n">ret_val</span> <span class="o">=</span> <span class="n">my_func</span><span class="p">(</span><span class="o">*</span><span class="n">my_list</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ret_val</span><span class="p">)</span>
+</code></pre></div>
+
+<h3 id="tb-061-python_course_mar26class1functionsfunc_ex5py">TB-061: <code>python_course_mar26/class1/functions/func_ex5.py</code></h3>
+<p><strong>Lab type:</strong> Python fundamentals lab</p>
+<p><strong>Objective:</strong> It wraps repeated network work in functions, so the same idea can be reused safely.</p>
+<p><strong>What to notice:</strong></p>
+<ol>
+<li>It defines reusable function(s): <code>my_func</code>.</li>
+<li>It prints something you can see, so you know the script actually ran.</li>
+</ol>
+<p><strong>Mastery tasks:</strong></p>
+<ul>
+<li>Read the source once without running it. Write one sentence describing its purpose.</li>
+<li>Identify the Python concept from the chapter track that this lab reinforces.</li>
+<li>Run it in a safe lab or convert it to a dry run by replacing device calls with <code>print()</code> statements.</li>
+<li>Change exactly one value, predict the result, then run again.</li>
+</ul>
+<p><strong>Source listing:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">my_func</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="mi">100</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">x</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">y</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">z</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span> <span class="o">+</span> <span class="n">z</span>
+
+
+<span class="n">my_dict</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;x&quot;</span><span class="p">:</span> <span class="mi">11</span><span class="p">,</span>
+    <span class="s2">&quot;y&quot;</span><span class="p">:</span> <span class="mi">22</span><span class="p">,</span>
+    <span class="s2">&quot;z&quot;</span><span class="p">:</span> <span class="mi">33</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="n">ret_val</span> <span class="o">=</span> <span class="n">my_func</span><span class="p">(</span><span class="o">**</span><span class="n">my_dict</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ret_val</span><span class="p">)</span>
+</code></pre></div>
+
+<h3 id="tb-062-python_course_mar26class2gaia_funcgaia_funcspy">TB-062: <code>python_course_mar26/class2/gaia_func/gaia_funcs.py</code></h3>
+<p><strong>Lab type:</strong> API automation lab</p>
+<p><strong>Objective:</strong> It treats network facts as structured data, so code can look up exact fields instead of reading text by eye.</p>
+<p><strong>What to notice:</strong></p>
+<ol>
+<li>First, it brings in helper tools: <code>requests, json</code>.</li>
+<li>It defines class blueprint(s): <code>GaiaAuthError, GaiaLogoutError</code>.</li>
+<li>It defines reusable function(s): <code>login, api_call, logout</code>.</li>
+</ol>
+<p><strong>Mastery tasks:</strong></p>
+<ul>
+<li>Read the source once without running it. Write one sentence describing its purpose.</li>
+<li>Identify the Python concept from the chapter track that this lab reinforces.</li>
+<li>Run it in a safe lab or convert it to a dry run by replacing device calls with <code>print()</code> statements.</li>
+<li>Change exactly one value, predict the result, then run again.</li>
+<li>List every exception path and what the script does after the failure.</li>
+</ul>
+<p><strong>Source listing:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">GaiaAuthError</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Exception raised when the session ID is missing or expired.&quot;&quot;&quot;</span>
+
+    <span class="k">pass</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">GaiaLogoutError</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Raised when the API returns a failure during the logout process.&quot;&quot;&quot;</span>
+
+    <span class="k">pass</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">login</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Login and return the session_id.&quot;&quot;&quot;</span>
+    <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Content-Type&quot;</span><span class="p">:</span> <span class="s2">&quot;application/json&quot;</span><span class="p">}</span>
+    <span class="n">ssl_verify</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="n">login_payload</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;user&quot;</span><span class="p">:</span> <span class="n">username</span><span class="p">,</span> <span class="s2">&quot;password&quot;</span><span class="p">:</span> <span class="n">password</span><span class="p">}</span>
+
+    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
+        <span class="n">url</span><span class="p">,</span>
+        <span class="n">data</span><span class="o">=</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">login_payload</span><span class="p">),</span>
+        <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span>
+        <span class="n">verify</span><span class="o">=</span><span class="n">ssl_verify</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">resp_struct</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">resp_struct</span><span class="p">[</span><span class="s2">&quot;sid&quot;</span><span class="p">]</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">api_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ssl_verify</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">payload</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">payload</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">if</span> <span class="s2">&quot;X-chkp-sid&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">headers</span><span class="p">:</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">Session ID not set, please call &#39;.login()&#39; method and properly</span>
+<span class="s2">authenticate to the API.</span>
+<span class="s2">&quot;&quot;&quot;</span>
+        <span class="k">raise</span> <span class="n">GaiaAuthError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+
+    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
+        <span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">payload</span><span class="p">),</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="n">verify</span><span class="o">=</span><span class="n">ssl_verify</span>
+    <span class="p">)</span>
+    <span class="k">return</span> <span class="n">response</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">logout</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Removes &#39;X-chkp-sid&#39; from headers and returns headers dict.&quot;&quot;&quot;</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">api_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">res</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">&quot;message&quot;</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">res</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span> <span class="ow">and</span> <span class="n">msg</span> <span class="o">==</span> <span class="s2">&quot;OK&quot;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="s2">&quot;X-chkp-sid&quot;</span> <span class="ow">in</span> <span class="n">headers</span><span class="p">:</span>
+            <span class="n">headers</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;X-chkp-sid&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">headers</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;Failed to &#39;logout&#39; from Gaia API&quot;</span>
+        <span class="k">raise</span> <span class="n">GaiaLogoutError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+</code></pre></div>
+
+<h3 id="tb-063-python_course_mar26class3mgmt_funcmgmt_funcspy">TB-063: <code>python_course_mar26/class3/mgmt_func/mgmt_funcs.py</code></h3>
+<p><strong>Lab type:</strong> API automation lab</p>
+<p><strong>Objective:</strong> It treats network facts as structured data, so code can look up exact fields instead of reading text by eye.</p>
+<p><strong>What to notice:</strong></p>
+<ol>
+<li>First, it brings in helper tools: <code>requests, json</code>.</li>
+<li>It defines class blueprint(s): <code>MgmtAuthError, MgmtLogoutError</code>.</li>
+<li>It defines reusable function(s): <code>login, api_call, logout</code>.</li>
+</ol>
+<p><strong>Mastery tasks:</strong></p>
+<ul>
+<li>Read the source once without running it. Write one sentence describing its purpose.</li>
+<li>Identify the Python concept from the chapter track that this lab reinforces.</li>
+<li>Run it in a safe lab or convert it to a dry run by replacing device calls with <code>print()</code> statements.</li>
+<li>Change exactly one value, predict the result, then run again.</li>
+<li>List every exception path and what the script does after the failure.</li>
+</ul>
+<p><strong>Source listing:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">MgmtAuthError</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Exception raised when the session ID is missing or expired.&quot;&quot;&quot;</span>
+
+    <span class="k">pass</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">MgmtLogoutError</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Raised when the API returns a failure during the logout process.&quot;&quot;&quot;</span>
+
+    <span class="k">pass</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">login</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Login and return the session_id.&quot;&quot;&quot;</span>
+    <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Content-Type&quot;</span><span class="p">:</span> <span class="s2">&quot;application/json&quot;</span><span class="p">}</span>
+    <span class="n">ssl_verify</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="n">login_payload</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;user&quot;</span><span class="p">:</span> <span class="n">username</span><span class="p">,</span> <span class="s2">&quot;password&quot;</span><span class="p">:</span> <span class="n">password</span><span class="p">}</span>
+
+    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
+        <span class="n">url</span><span class="p">,</span>
+        <span class="n">data</span><span class="o">=</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">login_payload</span><span class="p">),</span>
+        <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span>
+        <span class="n">verify</span><span class="o">=</span><span class="n">ssl_verify</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">resp_struct</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">resp_struct</span><span class="p">[</span><span class="s2">&quot;sid&quot;</span><span class="p">]</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">api_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ssl_verify</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">payload</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">payload</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">if</span> <span class="s2">&quot;X-chkp-sid&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">headers</span><span class="p">:</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">Session ID not set, please call &#39;.login()&#39; method and properly</span>
+<span class="s2">authenticate to the API.</span>
+<span class="s2">&quot;&quot;&quot;</span>
+        <span class="k">raise</span> <span class="n">MgmtAuthError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+
+    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
+        <span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">payload</span><span class="p">),</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="n">verify</span><span class="o">=</span><span class="n">ssl_verify</span>
+    <span class="p">)</span>
+    <span class="k">return</span> <span class="n">response</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">logout</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Removes &#39;X-chkp-sid&#39; from headers and returns headers dict.&quot;&quot;&quot;</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">api_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">res</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">&quot;message&quot;</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">res</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span> <span class="ow">and</span> <span class="n">msg</span> <span class="o">==</span> <span class="s2">&quot;OK&quot;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="s2">&quot;X-chkp-sid&quot;</span> <span class="ow">in</span> <span class="n">headers</span><span class="p">:</span>
+            <span class="n">headers</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;X-chkp-sid&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">headers</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;Failed to &#39;logout&#39; from Mgmt API&quot;</span>
+        <span class="k">raise</span> <span class="n">MgmtLogoutError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+</code></pre></div>
+
+<h3 id="tb-064-python_course_mar26workgaia_funcspy">TB-064: <code>python_course_mar26/work/gaia_funcs.py</code></h3>
+<p><strong>Lab type:</strong> API automation lab</p>
+<p><strong>Objective:</strong> It treats network facts as structured data, so code can look up exact fields instead of reading text by eye.</p>
+<p><strong>What to notice:</strong></p>
+<ol>
+<li>First, it brings in helper tools: <code>requests, json</code>.</li>
+<li>It defines class blueprint(s): <code>GaiaAuthError, GaiaLogoutError</code>.</li>
+<li>It defines reusable function(s): <code>login, api_call, logout</code>.</li>
+</ol>
+<p><strong>Mastery tasks:</strong></p>
+<ul>
+<li>Read the source once without running it. Write one sentence describing its purpose.</li>
+<li>Identify the Python concept from the chapter track that this lab reinforces.</li>
+<li>Run it in a safe lab or convert it to a dry run by replacing device calls with <code>print()</code> statements.</li>
+<li>Change exactly one value, predict the result, then run again.</li>
+<li>List every exception path and what the script does after the failure.</li>
+</ul>
+<p><strong>Source listing:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">GaiaAuthError</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Exception raised when the session ID is missing or expired.&quot;&quot;&quot;</span>
+
+    <span class="k">pass</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">GaiaLogoutError</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Raised when the API returns a failure during the logout process.&quot;&quot;&quot;</span>
+
+    <span class="k">pass</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">login</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Login and return the session_id.&quot;&quot;&quot;</span>
+    <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Content-Type&quot;</span><span class="p">:</span> <span class="s2">&quot;application/json&quot;</span><span class="p">}</span>
+    <span class="n">ssl_verify</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="n">login_payload</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;user&quot;</span><span class="p">:</span> <span class="n">username</span><span class="p">,</span> <span class="s2">&quot;password&quot;</span><span class="p">:</span> <span class="n">password</span><span class="p">}</span>
+
+    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
+        <span class="n">url</span><span class="p">,</span>
+        <span class="n">data</span><span class="o">=</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">login_payload</span><span class="p">),</span>
+        <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span>
+        <span class="n">verify</span><span class="o">=</span><span class="n">ssl_verify</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">resp_struct</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">resp_struct</span><span class="p">[</span><span class="s2">&quot;sid&quot;</span><span class="p">]</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">api_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ssl_verify</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">payload</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">payload</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">if</span> <span class="s2">&quot;X-chkp-sid&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">headers</span><span class="p">:</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">Session ID not set, please call &#39;.login()&#39; method and properly</span>
+<span class="s2">authenticate to the API.</span>
+<span class="s2">&quot;&quot;&quot;</span>
+        <span class="k">raise</span> <span class="n">GaiaAuthError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+
+    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
+        <span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">payload</span><span class="p">),</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="n">verify</span><span class="o">=</span><span class="n">ssl_verify</span>
+    <span class="p">)</span>
+    <span class="k">return</span> <span class="n">response</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">logout</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Removes &#39;X-chkp-sid&#39; from headers and returns headers dict.&quot;&quot;&quot;</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">api_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">res</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">&quot;message&quot;</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">res</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span> <span class="ow">and</span> <span class="n">msg</span> <span class="o">==</span> <span class="s2">&quot;OK&quot;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="s2">&quot;X-chkp-sid&quot;</span> <span class="ow">in</span> <span class="n">headers</span><span class="p">:</span>
+            <span class="n">headers</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;X-chkp-sid&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">headers</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;Failed to &#39;logout&#39; from Gaia API&quot;</span>
+        <span class="k">raise</span> <span class="n">GaiaLogoutError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+</code></pre></div>
+
+<h3 id="tb-065-python_course_mar26workmgmt_funcspy">TB-065: <code>python_course_mar26/work/mgmt_funcs.py</code></h3>
+<p><strong>Lab type:</strong> API automation lab</p>
+<p><strong>Objective:</strong> It treats network facts as structured data, so code can look up exact fields instead of reading text by eye.</p>
+<p><strong>What to notice:</strong></p>
+<ol>
+<li>First, it brings in helper tools: <code>requests, json</code>.</li>
+<li>It defines class blueprint(s): <code>MgmtAuthError, MgmtLogoutError</code>.</li>
+<li>It defines reusable function(s): <code>login, api_call, logout</code>.</li>
+</ol>
+<p><strong>Mastery tasks:</strong></p>
+<ul>
+<li>Read the source once without running it. Write one sentence describing its purpose.</li>
+<li>Identify the Python concept from the chapter track that this lab reinforces.</li>
+<li>Run it in a safe lab or convert it to a dry run by replacing device calls with <code>print()</code> statements.</li>
+<li>Change exactly one value, predict the result, then run again.</li>
+<li>List every exception path and what the script does after the failure.</li>
+</ul>
+<p><strong>Source listing:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">MgmtAuthError</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Exception raised when the session ID is missing or expired.&quot;&quot;&quot;</span>
+
+    <span class="k">pass</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">MgmtLogoutError</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Raised when the API returns a failure during the logout process.&quot;&quot;&quot;</span>
+
+    <span class="k">pass</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">login</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Login and return the session_id.&quot;&quot;&quot;</span>
+    <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Content-Type&quot;</span><span class="p">:</span> <span class="s2">&quot;application/json&quot;</span><span class="p">}</span>
+    <span class="n">ssl_verify</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="n">login_payload</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;user&quot;</span><span class="p">:</span> <span class="n">username</span><span class="p">,</span> <span class="s2">&quot;password&quot;</span><span class="p">:</span> <span class="n">password</span><span class="p">}</span>
+
+    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
+        <span class="n">url</span><span class="p">,</span>
+        <span class="n">data</span><span class="o">=</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">login_payload</span><span class="p">),</span>
+        <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span>
+        <span class="n">verify</span><span class="o">=</span><span class="n">ssl_verify</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">resp_struct</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">resp_struct</span><span class="p">[</span><span class="s2">&quot;sid&quot;</span><span class="p">]</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">api_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ssl_verify</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">payload</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">payload</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">if</span> <span class="s2">&quot;X-chkp-sid&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">headers</span><span class="p">:</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">Session ID not set, please call &#39;.login()&#39; method and properly</span>
+<span class="s2">authenticate to the API.</span>
+<span class="s2">&quot;&quot;&quot;</span>
+        <span class="k">raise</span> <span class="n">MgmtAuthError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+
+    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
+        <span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">payload</span><span class="p">),</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="n">verify</span><span class="o">=</span><span class="n">ssl_verify</span>
+    <span class="p">)</span>
+    <span class="k">return</span> <span class="n">response</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">logout</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Removes &#39;X-chkp-sid&#39; from headers and returns headers dict.&quot;&quot;&quot;</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">api_call</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">res</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">&quot;message&quot;</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">res</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span> <span class="ow">and</span> <span class="n">msg</span> <span class="o">==</span> <span class="s2">&quot;OK&quot;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="s2">&quot;X-chkp-sid&quot;</span> <span class="ow">in</span> <span class="n">headers</span><span class="p">:</span>
+            <span class="n">headers</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;X-chkp-sid&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">headers</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;Failed to &#39;logout&#39; from Mgmt API&quot;</span>
+        <span class="k">raise</span> <span class="n">MgmtLogoutError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+</code></pre></div>
+
+<h3 id="tb-066-python_course_mar26class3exercisesfw_policy_ex2fw_policy_edit_rulemd">TB-066: <code>python_course_mar26/class3/exercises/fw_policy_ex2/fw_policy_edit_rule.md</code></h3>
+<p><strong>Lab type:</strong> Reading and design lab</p>
+<p><strong>Objective:</strong> It talks to a network API, which means Python asks a controller or firewall manager for data or changes.</p>
+<p><strong>What to notice:</strong></p>
+<ol>
+<li>This is an exercise or explanation file.</li>
+<li>It tells the human what problem to solve before or after running the Python code.</li>
+<li>In the book, this becomes the bridge between the idea and the hands-on network task.</li>
+</ol>
+<p><strong>Mastery tasks:</strong></p>
+<ul>
+<li>Read the source once without running it. Write one sentence describing its purpose.</li>
+<li>Identify the Python concept from the chapter track that this lab reinforces.</li>
+<li>Turn the instructions into a checklist you could follow during a maintenance window.</li>
+<li>Write the smallest script that would support one step in the exercise.</li>
+</ul>
+<p><strong>Source listing:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="gu">### Edit firewall rule exercise</span>
+
+Expand on your Firewall Policy Exercise1 implementation.
+
+Change the allowed services in the &#39;corp_fw_rule&#39; to also include &quot;ssh&quot;.
+
+Update the firewall rule using the Mgmt API and your functions. After the rule has been updated, then &quot;publish&quot; and &quot;install&quot; the firewall policy.
+
+Note, ideally you will want to be able to share the same functions for your &quot;fw_policy_ex1&quot; code and for this code. You should avoid copying/duplicating the functions, if possible. 
+
+In order to simplify things, you can location both &quot;fw_policy_ex1&quot; code and this code in the same directory.
+</code></pre></div>
+
+<hr>
+        <div class="chapter-nav-footer"><a class="nav-btn prev" href="lab-track-07.html">← Lab Track 7</a><a class="nav-btn next" href="lab-track-09.html">Lab Track 9 →</a></div>
+      </article>
+    </main>
+    <aside class="sidebar-right">
+      <div class="toc-label">On This Page</div>
+<ol class="page-toc">
+<li class=""><a href="#lab-track-8-functions-for-reusable-automation_1">Lab Track 8: Functions for Reusable Automation</a></li>
+<li class="sub"><a href="#tb-057-python_course_mar26class1functionsfunc_ex1py">TB-057: python_course_mar26/class1/functions/func_ex1.py</a></li>
+<li class="sub"><a href="#tb-058-python_course_mar26class1functionsfunc_ex2py">TB-058: python_course_mar26/class1/functions/func_ex2.py</a></li>
+<li class="sub"><a href="#tb-059-python_course_mar26class1functionsfunc_ex3py">TB-059: python_course_mar26/class1/functions/func_ex3.py</a></li>
+<li class="sub"><a href="#tb-060-python_course_mar26class1functionsfunc_ex4py">TB-060: python_course_mar26/class1/functions/func_ex4.py</a></li>
+<li class="sub"><a href="#tb-061-python_course_mar26class1functionsfunc_ex5py">TB-061: python_course_mar26/class1/functions/func_ex5.py</a></li>
+<li class="sub"><a href="#tb-062-python_course_mar26class2gaia_funcgaia_funcspy">TB-062: python_course_mar26/class2/gaia_func/gaia_funcs.py</a></li>
+<li class="sub"><a href="#tb-063-python_course_mar26class3mgmt_funcmgmt_funcspy">TB-063: python_course_mar26/class3/mgmt_func/mgmt_funcs.py</a></li>
+<li class="sub"><a href="#tb-064-python_course_mar26workgaia_funcspy">TB-064: python_course_mar26/work/gaia_funcs.py</a></li>
+<li class="sub"><a href="#tb-065-python_course_mar26workmgmt_funcspy">TB-065: python_course_mar26/work/mgmt_funcs.py</a></li>
+<li class="sub"><a href="#tb-066-python_course_mar26class3exercisesfw_policy_ex2fw_policy_edit_rulemd">TB-066: python_course_mar26/class3/exercises/fw_policy_ex2/fw_policy_edit_rule.md</a></li>
+</ol>
+    </aside>
+  </div>
+  <script src="assets/book.js"></script>
+</body>
+</html>

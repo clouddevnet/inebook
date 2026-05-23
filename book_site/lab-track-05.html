@@ -1,0 +1,672 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lab Track 5: If Statements for Network Decisions | Python Network Automation Crash Course</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/book.css">
+</head>
+<body>
+  <nav class="site-nav">
+    <a class="nav-logo" href="index.html">Python Network Automation <span class="logo-badge">Book</span></a>
+    <div class="nav-actions">
+      <a href="part-iii-labs.html">Labs</a>
+      <a href="references.html">References</a>
+      <button class="theme-toggle" data-theme-toggle type="button">Dark</button>
+    </div>
+  </nav>
+  <div class="page-layout">
+    <aside class="sidebar-left">
+      <div class="toc-label">Start</div>
+<ol class="chapter-list">
+<li><a class="" href="index.html"><span>Home</span><small>Python Network Automation Crash Course</small></a></li>
+<li><a class="" href="introduction.html"><span>Introduction</span><small>Introduction: The Evolution You Cannot Ignore</small></a></li>
+</ol>
+<div class="toc-label">Chapters</div>
+<ol class="chapter-list">
+<li><a class="" href="ch01-chapter-1-getting-started-in-a-network-lab.html"><span>Ch 1</span><small>Chapter 1: Getting Started in a Network Lab</small></a></li>
+<li><a class="" href="ch02-chapter-2-variables-strings-and-device-facts.html"><span>Ch 2</span><small>Chapter 2: Variables, Strings, and Device Facts</small></a></li>
+<li><a class="" href="ch03-chapter-3-introducing-device-lists.html"><span>Ch 3</span><small>Chapter 3: Introducing Device Lists</small></a></li>
+<li><a class="" href="ch04-chapter-4-working-through-networks-with-loops.html"><span>Ch 4</span><small>Chapter 4: Working Through Networks with Loops</small></a></li>
+<li><a class="" href="ch05-chapter-5-if-statements-for-network-decisions.html"><span>Ch 5</span><small>Chapter 5: If Statements for Network Decisions</small></a></li>
+<li><a class="" href="ch06-chapter-6-dictionaries-for-device-inventory.html"><span>Ch 6</span><small>Chapter 6: Dictionaries for Device Inventory</small></a></li>
+<li><a class="" href="ch07-chapter-7-operator-input-and-while-loops.html"><span>Ch 7</span><small>Chapter 7: Operator Input and While Loops</small></a></li>
+<li><a class="" href="ch08-chapter-8-functions-for-reusable-automation.html"><span>Ch 8</span><small>Chapter 8: Functions for Reusable Automation</small></a></li>
+<li><a class="" href="ch09-chapter-9-classes-for-devices-and-sessions.html"><span>Ch 9</span><small>Chapter 9: Classes for Devices and Sessions</small></a></li>
+<li><a class="" href="ch10-chapter-10-files-exceptions-and-network-data.html"><span>Ch 10</span><small>Chapter 10: Files, Exceptions, and Network Data</small></a></li>
+<li><a class="" href="ch11-chapter-11-testing-network-automation.html"><span>Ch 11</span><small>Chapter 11: Testing Network Automation</small></a></li>
+<li><a class="" href="part-ii-network-automation.html"><span>Part II</span><small>Part II: Applying Python to Network Automation</small></a></li>
+<li><a class="" href="ch12-chapter-12-netmiko-sshing-to-your-network-at-python-sp.html"><span>Ch 12</span><small>Chapter 12: Netmiko: SSHing to Your Network at Python Speed</small></a></li>
+<li><a class="" href="ch13-chapter-13-multi-device-automation-and-file-driven-inv.html"><span>Ch 13</span><small>Chapter 13: Multi-Device Automation and File-Driven Inventory</small></a></li>
+<li><a class="" href="ch14-chapter-14-production-scripts-exceptions-env-vars-and-.html"><span>Ch 14</span><small>Chapter 14: Production Scripts: Exceptions, Env Vars, and Show Commands</small></a></li>
+<li><a class="" href="ch15-chapter-15-automated-backup-and-inventory-reports.html"><span>Ch 15</span><small>Chapter 15: Automated Backup and Inventory Reports</small></a></li>
+</ol>
+<div class="toc-label">Labs</div>
+<ol class="chapter-list">
+<li><a class="" href="part-iii-labs.html"><span>Part III Labs</span><small>Part III: Twin-Bridges Mastery Lab Workbook</small></a></li>
+<li><a class="" href="lab-track-01.html"><span>Lab Track 1</span><small>Lab Track 1: Getting Started in a Network Lab</small></a></li>
+<li><a class="" href="lab-track-02.html"><span>Lab Track 2</span><small>Lab Track 2: Variables, Strings, and Device Facts</small></a></li>
+<li><a class="" href="lab-track-03.html"><span>Lab Track 3</span><small>Lab Track 3: Introducing Device Lists</small></a></li>
+<li><a class="" href="lab-track-04.html"><span>Lab Track 4</span><small>Lab Track 4: Working Through Networks with Loops</small></a></li>
+<li><a class="active" href="lab-track-05.html"><span>Lab Track 5</span><small>Lab Track 5: If Statements for Network Decisions</small></a></li>
+<li><a class="" href="lab-track-06.html"><span>Lab Track 6</span><small>Lab Track 6: Dictionaries for Device Inventory</small></a></li>
+<li><a class="" href="lab-track-07.html"><span>Lab Track 7</span><small>Lab Track 7: Operator Input and While Loops</small></a></li>
+<li><a class="" href="lab-track-08.html"><span>Lab Track 8</span><small>Lab Track 8: Functions for Reusable Automation</small></a></li>
+<li><a class="" href="lab-track-09.html"><span>Lab Track 9</span><small>Lab Track 9: Classes for Devices and Sessions</small></a></li>
+<li><a class="" href="lab-track-10.html"><span>Lab Track 10</span><small>Lab Track 10: Files, Exceptions, and Network Data</small></a></li>
+<li><a class="" href="lab-track-11.html"><span>Lab Track 11</span><small>Lab Track 11: Testing Network Automation</small></a></li>
+<li><a class="" href="lab-track-12.html"><span>Lab Track 12</span><small>Lab Track 12: Starting a Netmiko Project</small></a></li>
+<li><a class="" href="lab-track-13.html"><span>Lab Track 13</span><small>Lab Track 13: Collecting Show Commands Across a Fleet</small></a></li>
+<li><a class="" href="lab-track-14.html"><span>Lab Track 14</span><small>Lab Track 14: Configuration, Validation, and Rollback Thinking</small></a></li>
+<li><a class="" href="lab-track-15.html"><span>Lab Track 15</span><small>Lab Track 15: Generating Network Reports</small></a></li>
+<li><a class="" href="lab-track-16.html"><span>Lab Track 16</span><small>Lab Track 16: Inventories, YAML, JSON, and Real-World Data</small></a></li>
+<li><a class="" href="lab-track-17.html"><span>Lab Track 17</span><small>Lab Track 17: Network APIs</small></a></li>
+<li><a class="" href="lab-track-18.html"><span>Lab Track 18</span><small>Lab Track 18: Building a Network Automation Tool</small></a></li>
+<li><a class="" href="lab-track-19.html"><span>Lab Track 19</span><small>Lab Track 19: Credentials, Ownership, and Guardrails</small></a></li>
+<li><a class="" href="lab-track-20.html"><span>Lab Track 20</span><small>Lab Track 20: Operating and Deploying Automation</small></a></li>
+</ol>
+<div class="toc-label">Back Matter</div>
+<ol class="chapter-list">
+<li><a class="" href="references.html"><span>References</span><small>References</small></a></li>
+</ol>
+    </aside>
+    <main class="main-content">
+      <article class="article-shell">
+        <div class="article-meta">Labs · Lab Track 5</div>
+        <h1 id="lab-track-5-if-statements-for-network-decisions">Lab Track 5: If Statements for Network Decisions</h1>
+<h2 id="lab-track-5-if-statements-for-network-decisions_1">Lab Track 5: If Statements for Network Decisions</h2>
+<p><strong>Concept focus:</strong> decide whether an interface, device, or API version needs action.</p>
+<p><strong>Mental model:</strong> <code>network fact -&gt; condition -&gt; allow/deny/remediate branch -&gt; action</code></p>
+<h3 id="tb-025-python_course_mar26class1condapi_support_versionsyml">TB-025: <code>python_course_mar26/class1/cond/api_support_versions.yml</code></h3>
+<p><strong>Lab type:</strong> Data lab</p>
+<p><strong>Objective:</strong> It stores inventory or settings in a human-readable file that scripts can load and reuse.</p>
+<p><strong>What to notice:</strong></p>
+<ol>
+<li>This is data, not a program: it gives Python facts to work with.</li>
+<li>Think of each key as a label on a box and each value as what is inside the box.</li>
+<li>A script can load this file and use the values to decide which devices or commands to handle.</li>
+</ol>
+<p><strong>Mastery tasks:</strong></p>
+<ul>
+<li>Read the source once without running it. Write one sentence describing its purpose.</li>
+<li>Identify the Python concept from the chapter track that this lab reinforces.</li>
+<li>Find the top-level keys and explain what each section represents operationally.</li>
+<li>Add one safe fake device/object and update a script or pseudocode loop to consume it.</li>
+</ul>
+<p><strong>Source listing:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="nn">---</span>
+<span class="nt">supported-versions</span><span class="p">:</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;1&#39;</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;1.1&#39;</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;1.2&#39;</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;1.3&#39;</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;1.4&#39;</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;1.5&#39;</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;1.6&#39;</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;1.7&#39;</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;1.8&#39;</span>
+</code></pre></div>
+
+<h3 id="tb-026-python_course_mar26class1booleansshow_circuitpy">TB-026: <code>python_course_mar26/class1/booleans/show_circuit.py</code></h3>
+<p><strong>Lab type:</strong> Python fundamentals lab</p>
+<p><strong>Objective:</strong> It proves the script can run by printing a visible message, which is the first feedback loop before automating devices.</p>
+<p><strong>What to notice:</strong></p>
+<ol>
+<li>The first line tells Unix-like systems which Python program should run this file.</li>
+<li>First, it brings in helper tools: <code>rich.print</code>.</li>
+<li>It prints something you can see, so you know the script actually ran.</li>
+</ol>
+<p><strong>Mastery tasks:</strong></p>
+<ul>
+<li>Read the source once without running it. Write one sentence describing its purpose.</li>
+<li>Identify the Python concept from the chapter track that this lab reinforces.</li>
+<li>Run it in a safe lab or convert it to a dry run by replacing device calls with <code>print()</code> statements.</li>
+<li>Change exactly one value, predict the result, then run again.</li>
+</ul>
+<p><strong>Source listing:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/env python</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">rich</span><span class="w"> </span><span class="kn">import</span> <span class="nb">print</span>
+
+<span class="c1"># and: if the first condition is False, we are done.</span>
+<span class="n">check_cond</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="k">if</span> <span class="n">check_cond</span> <span class="ow">and</span> <span class="n">my_func</span><span class="p">():</span>  <span class="c1"># noqa</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Never printed&quot;</span><span class="p">)</span>
+
+<span class="c1"># or: if the first condition is True, we are done.</span>
+<span class="n">skip_func</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="k">if</span> <span class="n">skip_func</span> <span class="ow">or</span> <span class="n">my_func</span><span class="p">():</span>  <span class="c1"># noqa</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Always printed&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<h3 id="tb-027-python_course_mar26class1condcond_ex4py">TB-027: <code>python_course_mar26/class1/cond/cond_ex4.py</code></h3>
+<p><strong>Lab type:</strong> Python fundamentals lab</p>
+<p><strong>Objective:</strong> It stores inventory or settings in a human-readable file that scripts can load and reuse.</p>
+<p><strong>What to notice:</strong></p>
+<ol>
+<li>The first line tells Unix-like systems which Python program should run this file.</li>
+<li>First, it brings in helper tools: <code>ipdb, yaml</code>.</li>
+<li>It reads or writes files, which is how automation remembers inventory, commands, or reports.</li>
+</ol>
+<p><strong>Mastery tasks:</strong></p>
+<ul>
+<li>Read the source once without running it. Write one sentence describing its purpose.</li>
+<li>Identify the Python concept from the chapter track that this lab reinforces.</li>
+<li>Run it in a safe lab or convert it to a dry run by replacing device calls with <code>print()</code> statements.</li>
+<li>Change exactly one value, predict the result, then run again.</li>
+</ul>
+<p><strong>Source listing:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/env python</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ipdb</span>  <span class="c1"># noqa</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">yaml</span>
+<span class="c1"># from rich import print</span>
+
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;api_support_versions.yml&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">api_versions</span> <span class="o">=</span> <span class="n">yaml</span><span class="o">.</span><span class="n">safe_load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+
+<span class="n">supported_versions</span> <span class="o">=</span> <span class="n">api_versions</span><span class="p">[</span><span class="s2">&quot;supported-versions&quot;</span><span class="p">]</span>
+
+<span class="c1"># [&#39;1&#39;, &#39;1.1&#39;, &#39;1.2&#39;, &#39;1.3&#39;, &#39;1.4&#39;, &#39;1.5&#39;, &#39;1.6&#39;, &#39;1.7&#39;, &#39;1.8&#39;]</span>
+<span class="k">if</span> <span class="s2">&quot;1.8&quot;</span> <span class="ow">in</span> <span class="n">supported_versions</span><span class="p">:</span>
+    <span class="n">api_version</span> <span class="o">=</span> <span class="s2">&quot;1.8&quot;</span>
+
+<span class="n">api_version</span> <span class="o">=</span> <span class="s2">&quot;1.8&quot;</span>
+<span class="k">if</span> <span class="s2">&quot;1.&quot;</span> <span class="ow">in</span> <span class="n">api_version</span><span class="p">:</span>
+    <span class="n">base_api</span> <span class="o">=</span> <span class="s2">&quot;v1&quot;</span>
+<span class="k">elif</span> <span class="s2">&quot;2.&quot;</span> <span class="ow">in</span> <span class="n">api_version</span><span class="p">:</span>
+    <span class="n">base_api</span> <span class="o">=</span> <span class="s2">&quot;v2&quot;</span>
+</code></pre></div>
+
+<h3 id="tb-028-python_course_mar26class1condcond_ex5py">TB-028: <code>python_course_mar26/class1/cond/cond_ex5.py</code></h3>
+<p><strong>Lab type:</strong> Python fundamentals lab</p>
+<p><strong>Objective:</strong> It stores inventory or settings in a human-readable file that scripts can load and reuse.</p>
+<p><strong>What to notice:</strong></p>
+<ol>
+<li>The first line tells Unix-like systems which Python program should run this file.</li>
+<li>First, it brings in helper tools: <code>ipdb, yaml, rich.print</code>.</li>
+<li>It reads or writes files, which is how automation remembers inventory, commands, or reports.</li>
+<li>It prints something you can see, so you know the script actually ran.</li>
+</ol>
+<p><strong>Mastery tasks:</strong></p>
+<ul>
+<li>Read the source once without running it. Write one sentence describing its purpose.</li>
+<li>Identify the Python concept from the chapter track that this lab reinforces.</li>
+<li>Run it in a safe lab or convert it to a dry run by replacing device calls with <code>print()</code> statements.</li>
+<li>Change exactly one value, predict the result, then run again.</li>
+</ul>
+<p><strong>Source listing:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/env python</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ipdb</span>  <span class="c1"># noqa</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">yaml</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">rich</span><span class="w"> </span><span class="kn">import</span> <span class="nb">print</span>
+
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;api_support_versions.yml&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">api_versions</span> <span class="o">=</span> <span class="n">yaml</span><span class="o">.</span><span class="n">safe_load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+
+<span class="n">supported_versions</span> <span class="o">=</span> <span class="n">api_versions</span><span class="p">[</span><span class="s2">&quot;supported-versions&quot;</span><span class="p">]</span>
+
+<span class="c1"># [&#39;1&#39;, &#39;1.1&#39;, &#39;1.2&#39;, &#39;1.3&#39;, &#39;1.4&#39;, &#39;1.5&#39;, &#39;1.6&#39;, &#39;1.7&#39;, &#39;1.8&#39;]</span>
+<span class="k">if</span> <span class="s2">&quot;1.8&quot;</span> <span class="ow">in</span> <span class="n">supported_versions</span><span class="p">:</span>
+    <span class="n">api_version</span> <span class="o">=</span> <span class="s2">&quot;1.8&quot;</span>
+
+<span class="n">api_version</span> <span class="o">=</span> <span class="s2">&quot;1.8&quot;</span>
+<span class="k">if</span> <span class="s2">&quot;1.&quot;</span> <span class="ow">in</span> <span class="n">api_version</span><span class="p">:</span>
+    <span class="n">base_api</span> <span class="o">=</span> <span class="s2">&quot;v1&quot;</span>
+<span class="k">elif</span> <span class="s2">&quot;2.&quot;</span> <span class="ow">in</span> <span class="n">api_version</span><span class="p">:</span>
+    <span class="n">base_api</span> <span class="o">=</span> <span class="s2">&quot;v2&quot;</span>
+
+<span class="k">if</span> <span class="n">base_api</span> <span class="o">==</span> <span class="s2">&quot;v1&quot;</span> <span class="ow">and</span> <span class="nb">float</span><span class="p">(</span><span class="n">api_version</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mf">1.8</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;API Version 1.8 or later (not V2)&quot;</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">base_api</span> <span class="o">==</span> <span class="s2">&quot;v1&quot;</span> <span class="ow">or</span> <span class="n">base_api</span> <span class="o">==</span> <span class="s2">&quot;v2&quot;</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;API V1 or V2&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<h3 id="tb-029-python_course_mar26class1condcond_ex1py">TB-029: <code>python_course_mar26/class1/cond/cond_ex1.py</code></h3>
+<p><strong>Lab type:</strong> Python fundamentals lab</p>
+<p><strong>Objective:</strong> It treats network facts as structured data, so code can look up exact fields instead of reading text by eye.</p>
+<p><strong>What to notice:</strong></p>
+<ol>
+<li>The first line tells Unix-like systems which Python program should run this file.</li>
+<li>First, it brings in helper tools: <code>ipdb, json, rich.print</code>.</li>
+<li>It reads or writes files, which is how automation remembers inventory, commands, or reports.</li>
+<li>It prints something you can see, so you know the script actually ran.</li>
+</ol>
+<p><strong>Mastery tasks:</strong></p>
+<ul>
+<li>Read the source once without running it. Write one sentence describing its purpose.</li>
+<li>Identify the Python concept from the chapter track that this lab reinforces.</li>
+<li>Run it in a safe lab or convert it to a dry run by replacing device calls with <code>print()</code> statements.</li>
+<li>Change exactly one value, predict the result, then run again.</li>
+</ul>
+<p><strong>Source listing:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/env python</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ipdb</span>  <span class="c1"># noqa</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">rich</span><span class="w"> </span><span class="kn">import</span> <span class="nb">print</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;tcp_services.json&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">services</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+
+<span class="n">service_list</span> <span class="o">=</span> <span class="n">services</span><span class="p">[</span><span class="s2">&quot;objects&quot;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">service_list</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">service</span> <span class="ow">in</span> <span class="n">service_list</span><span class="p">:</span>
+    <span class="n">service_name</span> <span class="o">=</span> <span class="n">service</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">service_name</span> <span class="o">==</span> <span class="s2">&quot;ftp&quot;</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Found FTP Service&quot;</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">service_name</span> <span class="o">==</span> <span class="s2">&quot;domain-tcp&quot;</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Found DNS (TCP)&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">service_name</span><span class="p">)</span>
+</code></pre></div>
+
+<h3 id="tb-030-python_course_mar26class1condcond_ex2py">TB-030: <code>python_course_mar26/class1/cond/cond_ex2.py</code></h3>
+<p><strong>Lab type:</strong> Python fundamentals lab</p>
+<p><strong>Objective:</strong> It treats network facts as structured data, so code can look up exact fields instead of reading text by eye.</p>
+<p><strong>What to notice:</strong></p>
+<ol>
+<li>The first line tells Unix-like systems which Python program should run this file.</li>
+<li>First, it brings in helper tools: <code>ipdb, json, rich.print</code>.</li>
+<li>It defines reusable function(s): <code>check_service</code>.</li>
+<li>It reads or writes files, which is how automation remembers inventory, commands, or reports.</li>
+<li>It prints something you can see, so you know the script actually ran.</li>
+</ol>
+<p><strong>Mastery tasks:</strong></p>
+<ul>
+<li>Read the source once without running it. Write one sentence describing its purpose.</li>
+<li>Identify the Python concept from the chapter track that this lab reinforces.</li>
+<li>Run it in a safe lab or convert it to a dry run by replacing device calls with <code>print()</code> statements.</li>
+<li>Change exactly one value, predict the result, then run again.</li>
+</ul>
+<p><strong>Source listing:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/env python</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ipdb</span>  <span class="c1"># noqa</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">rich</span><span class="w"> </span><span class="kn">import</span> <span class="nb">print</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">check_service</span><span class="p">(</span><span class="n">service</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Just placeholder function.&quot;&quot;&quot;</span>
+    <span class="k">pass</span>
+
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;tcp_services.json&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">services</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+
+<span class="n">service_list</span> <span class="o">=</span> <span class="n">services</span><span class="p">[</span><span class="s2">&quot;objects&quot;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">service_list</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">service</span> <span class="ow">in</span> <span class="n">service_list</span><span class="p">:</span>
+    <span class="n">service_name</span> <span class="o">=</span> <span class="n">service</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">service_name</span> <span class="o">==</span> <span class="s2">&quot;ftp&quot;</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Found FTP Service&quot;</span><span class="p">)</span>
+        <span class="n">check</span> <span class="o">=</span> <span class="n">check_service</span><span class="p">(</span><span class="n">service</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">check</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;FTP service check passed&quot;</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">service_name</span> <span class="o">==</span> <span class="s2">&quot;domain-tcp&quot;</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Found DNS (TCP)&quot;</span><span class="p">)</span>
+        <span class="n">check_service</span><span class="p">(</span><span class="n">service</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Service not found&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Nothing else to do&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<h3 id="tb-031-python_course_mar26class1condcond_ex3py">TB-031: <code>python_course_mar26/class1/cond/cond_ex3.py</code></h3>
+<p><strong>Lab type:</strong> Python fundamentals lab</p>
+<p><strong>Objective:</strong> It treats network facts as structured data, so code can look up exact fields instead of reading text by eye.</p>
+<p><strong>What to notice:</strong></p>
+<ol>
+<li>The first line tells Unix-like systems which Python program should run this file.</li>
+<li>First, it brings in helper tools: <code>ipdb, json, rich.print</code>.</li>
+<li>It defines reusable function(s): <code>check_service</code>.</li>
+<li>It reads or writes files, which is how automation remembers inventory, commands, or reports.</li>
+<li>It prints something you can see, so you know the script actually ran.</li>
+</ol>
+<p><strong>Mastery tasks:</strong></p>
+<ul>
+<li>Read the source once without running it. Write one sentence describing its purpose.</li>
+<li>Identify the Python concept from the chapter track that this lab reinforces.</li>
+<li>Run it in a safe lab or convert it to a dry run by replacing device calls with <code>print()</code> statements.</li>
+<li>Change exactly one value, predict the result, then run again.</li>
+</ul>
+<p><strong>Source listing:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/env python</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ipdb</span>  <span class="c1"># noqa</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">rich</span><span class="w"> </span><span class="kn">import</span> <span class="nb">print</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">check_service</span><span class="p">(</span><span class="n">service</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Just placeholder function.&quot;&quot;&quot;</span>
+    <span class="k">pass</span>
+
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;tcp_services.json&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">services</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+
+<span class="n">service_list</span> <span class="o">=</span> <span class="n">services</span><span class="p">[</span><span class="s2">&quot;objects&quot;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">service_list</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">service</span> <span class="ow">in</span> <span class="n">service_list</span><span class="p">:</span>
+    <span class="n">service_name</span> <span class="o">=</span> <span class="n">service</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">service_name</span> <span class="o">==</span> <span class="s2">&quot;ftp&quot;</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Found FTP Service&quot;</span><span class="p">)</span>
+        <span class="n">check</span> <span class="o">=</span> <span class="n">check_service</span><span class="p">(</span><span class="n">service</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">check</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;FTP service check passed&quot;</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">service_name</span> <span class="o">==</span> <span class="s2">&quot;domain-tcp&quot;</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Found DNS (TCP)&quot;</span><span class="p">)</span>
+        <span class="n">check_service</span><span class="p">(</span><span class="n">service</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Service not found&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Nothing else to do&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<h3 id="tb-032-python_course_mar26class1booleanstruishpy">TB-032: <code>python_course_mar26/class1/booleans/truish.py</code></h3>
+<p><strong>Lab type:</strong> Python fundamentals lab</p>
+<p><strong>Objective:</strong> It proves the script can run by printing a visible message, which is the first feedback loop before automating devices.</p>
+<p><strong>What to notice:</strong></p>
+<ol>
+<li>The first line tells Unix-like systems which Python program should run this file.</li>
+<li>First, it brings in helper tools: <code>rich.print</code>.</li>
+<li>It prints something you can see, so you know the script actually ran.</li>
+</ol>
+<p><strong>Mastery tasks:</strong></p>
+<ul>
+<li>Read the source once without running it. Write one sentence describing its purpose.</li>
+<li>Identify the Python concept from the chapter track that this lab reinforces.</li>
+<li>Run it in a safe lab or convert it to a dry run by replacing device calls with <code>print()</code> statements.</li>
+<li>Change exactly one value, predict the result, then run again.</li>
+</ul>
+<p><strong>Source listing:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/env python</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">rich</span><span class="w"> </span><span class="kn">import</span> <span class="nb">print</span>
+
+<span class="c1"># Strings</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Strings:&quot;</span><span class="p">)</span>
+<span class="n">some_str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">bool</span><span class="p">(</span><span class="n">some_str</span><span class="p">))</span>
+
+<span class="c1"># Numbers</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Numbers:&quot;</span><span class="p">)</span>
+<span class="n">some_int</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">bool</span><span class="p">(</span><span class="n">some_int</span><span class="p">))</span>
+<span class="n">some_float</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">bool</span><span class="p">(</span><span class="n">some_float</span><span class="p">))</span>
+
+<span class="c1"># Lists</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Lists:&quot;</span><span class="p">)</span>
+<span class="n">some_list</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">bool</span><span class="p">(</span><span class="n">some_list</span><span class="p">))</span>
+
+<span class="c1"># Dict</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Dict:&quot;</span><span class="p">)</span>
+<span class="n">some_dict</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">bool</span><span class="p">(</span><span class="n">some_dict</span><span class="p">))</span>
+</code></pre></div>
+
+<h3 id="tb-033-python_course_mar26class1condtcp_servicesjson">TB-033: <code>python_course_mar26/class1/cond/tcp_services.json</code></h3>
+<p><strong>Lab type:</strong> Data lab</p>
+<p><strong>Objective:</strong> It treats network facts as structured data, so code can look up exact fields instead of reading text by eye.</p>
+<p><strong>What to notice:</strong></p>
+<ol>
+<li>This is data, not a program: it gives Python facts to work with.</li>
+<li>Think of each key as a label on a box and each value as what is inside the box.</li>
+<li>A script can load this file and use the values to decide which devices or commands to handle.</li>
+</ol>
+<p><strong>Mastery tasks:</strong></p>
+<ul>
+<li>Read the source once without running it. Write one sentence describing its purpose.</li>
+<li>Identify the Python concept from the chapter track that this lab reinforces.</li>
+<li>Find the top-level keys and explain what each section represents operationally.</li>
+<li>Add one safe fake device/object and update a script or pseudocode loop to consume it.</li>
+</ul>
+<p><strong>Source listing:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;objects&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;uid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;97aeb44f-9aea-11d5-bd16-0090272ccb30&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;AOL&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;service-tcp&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;domain&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;uid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;a0bbbc99-adef-4ef8-bb6d-defdefdefdef&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Check Point Data&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;domain-type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;data domain&quot;</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="nt">&quot;port&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;5190&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;icon&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Services/TCPService&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;color&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;red&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;uid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;97aeb3e9-9aea-11d5-bd16-0090272ccb30&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;AP-Defender&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;service-tcp&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;domain&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;uid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;a0bbbc99-adef-4ef8-bb6d-defdefdefdef&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Check Point Data&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;domain-type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;data domain&quot;</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="nt">&quot;port&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2626&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;icon&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Services/TCPService&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;color&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;firebrick&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;uid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;97aeb3ea-9aea-11d5-bd16-0090272ccb30&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;AT-Defender&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;service-tcp&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;domain&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;uid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;a0bbbc99-adef-4ef8-bb6d-defdefdefdef&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Check Point Data&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;domain-type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;data domain&quot;</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="nt">&quot;port&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2626&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;icon&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Services/TCPService&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;color&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;firebrick&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;uid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;96759a8d-aab8-43d9-bbfc-b459ce66ac87&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Backage&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;service-tcp&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;domain&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;uid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;a0bbbc99-adef-4ef8-bb6d-defdefdefdef&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Check Point Data&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;domain-type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;data domain&quot;</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="nt">&quot;port&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;411&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;icon&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Services/TCPService&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;color&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;pink&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;uid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1fceea78-d378-44b4-8939-019b68f48518&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;BGP&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;service-tcp&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;domain&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;uid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;a0bbbc99-adef-4ef8-bb6d-defdefdefdef&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Check Point Data&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;domain-type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;data domain&quot;</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="nt">&quot;port&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;179&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;icon&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Services/TCPService&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;color&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;black&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;uid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;86077a7d-a8da-4b5b-919c-366fe91ad1da&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Bionet-Setup&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;service-tcp&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;domain&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;uid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;a0bbbc99-adef-4ef8-bb6d-defdefdefdef&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Check Point Data&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;domain-type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;data domain&quot;</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="nt">&quot;port&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;5000&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;icon&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Services/TCPService&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;color&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;magenta&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;uid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;11da2773-a070-4f68-a3c2-9ce5dc158683&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CheckPointExchangeAgent&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;service-tcp&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;domain&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;uid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;a0bbbc99-adef-4ef8-bb6d-defdefdefdef&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Check Point Data&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;domain-type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;data domain&quot;</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="nt">&quot;port&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;18301&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;icon&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Protocols/MailProtocolEnvelope&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;color&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;black&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;uid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;986bad5a-94d2-4a8c-81aa-de98d3ecb5c6&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Citrix_ICA&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;service-tcp&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;domain&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;uid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;a0bbbc99-adef-4ef8-bb6d-defdefdefdef&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Check Point Data&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;domain-type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;data domain&quot;</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="nt">&quot;port&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1494&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;icon&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Services/TCPService&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;color&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;black&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;uid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;97aeb451-9aea-11d5-bd16-0090272ccb30&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ConnectedOnLine&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;service-tcp&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;domain&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;uid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;a0bbbc99-adef-4ef8-bb6d-defdefdefdef&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Check Point Data&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;domain-type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;data domain&quot;</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="nt">&quot;port&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;16384&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;icon&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Services/TCPService&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;color&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;black&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;uid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;97aeb3ad-9aea-11d5-bd16-0090272ccb30&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CP_Exnet_PK&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;service-tcp&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;domain&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;uid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;a0bbbc99-adef-4ef8-bb6d-defdefdefdef&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Check Point Data&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;domain-type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;data domain&quot;</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="nt">&quot;port&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;18262&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;icon&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Services/TCPService&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;color&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;firebrick&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;uid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;97aeb3ae-9aea-11d5-bd16-0090272ccb30&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CP_Exnet_resolve&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;service-tcp&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;domain&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;uid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;a0bbbc99-adef-4ef8-bb6d-defdefdefdef&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Check Point Data&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;domain-type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;data domain&quot;</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="nt">&quot;port&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;18263&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;icon&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Services/TCPService&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;color&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;firebrick&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;uid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;97aeb3a9-9aea-11d5-bd16-0090272ccb30&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CP_redundant&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;service-tcp&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;domain&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;uid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;a0bbbc99-adef-4ef8-bb6d-defdefdefdef&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Check Point Data&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;domain-type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;data domain&quot;</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="nt">&quot;port&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;18221&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;icon&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Services/TCPService&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;color&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;firebrick&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;uid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;97aeb397-9aea-11d5-bd16-0090272ccb30&quot;</span><span class="p">,</span>
+</code></pre></div>
+
+<p><em>Source excerpt shown: first 160 of 657 lines. Use the repository file for the full data/output sample.</em></p>
+<h3 id="tb-034-python_course_mar26class1exercisescond_excond_ex1md">TB-034: <code>python_course_mar26/class1/exercises/cond_ex/cond_ex1.md</code></h3>
+<p><strong>Lab type:</strong> Reading and design lab</p>
+<p><strong>Objective:</strong> It repeats a network task over items such as devices, interfaces, commands, or retries.</p>
+<p><strong>What to notice:</strong></p>
+<ol>
+<li>This is an exercise or explanation file.</li>
+<li>It tells the human what problem to solve before or after running the Python code.</li>
+<li>In the book, this becomes the bridge between the idea and the hands-on network task.</li>
+</ol>
+<p><strong>Mastery tasks:</strong></p>
+<ul>
+<li>Read the source once without running it. Write one sentence describing its purpose.</li>
+<li>Identify the Python concept from the chapter track that this lab reinforces.</li>
+<li>Turn the instructions into a checklist you could follow during a maintenance window.</li>
+<li>Write the smallest script that would support one step in the exercise.</li>
+</ul>
+<p><strong>Source listing:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="gu">### Conditional Exercise1</span>
+
+Use &#39;input&#39; to prompt for a pod number. From this construct a &quot;fw_name&quot; variable that refers to a pod (for example, &quot;chkpnt-pod1&quot;).
+
+Construct a conditional that prints out &quot;Found pod1&quot; and &quot;Found pod99&quot; if the &quot;fw_name&quot; is &quot;chkpnt-pod1&quot; or &quot;chkpnt-pod99&quot;. If neither of those conditions are matched, then print out the message &quot;Not my pod&quot;.
+</code></pre></div>
+
+<h3 id="tb-035-python_course_mar26class1exercisescond_excond_ex1py">TB-035: <code>python_course_mar26/class1/exercises/cond_ex/cond_ex1.py</code></h3>
+<p><strong>Lab type:</strong> Python fundamentals lab</p>
+<p><strong>Objective:</strong> It proves the script can run by printing a visible message, which is the first feedback loop before automating devices.</p>
+<p><strong>What to notice:</strong></p>
+<ol>
+<li>The first line tells Unix-like systems which Python program should run this file.</li>
+<li>First, it brings in helper tools: <code>rich.print</code>.</li>
+<li>It prints something you can see, so you know the script actually ran.</li>
+</ol>
+<p><strong>Mastery tasks:</strong></p>
+<ul>
+<li>Read the source once without running it. Write one sentence describing its purpose.</li>
+<li>Identify the Python concept from the chapter track that this lab reinforces.</li>
+<li>Run it in a safe lab or convert it to a dry run by replacing device calls with <code>print()</code> statements.</li>
+<li>Change exactly one value, predict the result, then run again.</li>
+</ul>
+<p><strong>Source listing:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/env python</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">rich</span><span class="w"> </span><span class="kn">import</span> <span class="nb">print</span>
+
+<span class="n">pod_numb</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter pod number: &quot;</span><span class="p">)</span>
+<span class="n">fw_name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;chkpnt-pod</span><span class="si">{</span><span class="n">pod_numb</span><span class="si">}</span><span class="s2">&quot;</span>
+
+<span class="k">if</span> <span class="n">fw_name</span> <span class="o">==</span> <span class="s2">&quot;chkpnt-pod1&quot;</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Found pod1&quot;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">fw_name</span> <span class="o">==</span> <span class="s2">&quot;chkpnt-pod99&quot;</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Found pod99&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Not my pod&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<hr>
+        <div class="chapter-nav-footer"><a class="nav-btn prev" href="lab-track-04.html">← Lab Track 4</a><a class="nav-btn next" href="lab-track-06.html">Lab Track 6 →</a></div>
+      </article>
+    </main>
+    <aside class="sidebar-right">
+      <div class="toc-label">On This Page</div>
+<ol class="page-toc">
+<li class=""><a href="#lab-track-5-if-statements-for-network-decisions_1">Lab Track 5: If Statements for Network Decisions</a></li>
+<li class="sub"><a href="#tb-025-python_course_mar26class1condapi_support_versionsyml">TB-025: python_course_mar26/class1/cond/api_support_versions.yml</a></li>
+<li class="sub"><a href="#tb-026-python_course_mar26class1booleansshow_circuitpy">TB-026: python_course_mar26/class1/booleans/show_circuit.py</a></li>
+<li class="sub"><a href="#tb-027-python_course_mar26class1condcond_ex4py">TB-027: python_course_mar26/class1/cond/cond_ex4.py</a></li>
+<li class="sub"><a href="#tb-028-python_course_mar26class1condcond_ex5py">TB-028: python_course_mar26/class1/cond/cond_ex5.py</a></li>
+<li class="sub"><a href="#tb-029-python_course_mar26class1condcond_ex1py">TB-029: python_course_mar26/class1/cond/cond_ex1.py</a></li>
+<li class="sub"><a href="#tb-030-python_course_mar26class1condcond_ex2py">TB-030: python_course_mar26/class1/cond/cond_ex2.py</a></li>
+<li class="sub"><a href="#tb-031-python_course_mar26class1condcond_ex3py">TB-031: python_course_mar26/class1/cond/cond_ex3.py</a></li>
+<li class="sub"><a href="#tb-032-python_course_mar26class1booleanstruishpy">TB-032: python_course_mar26/class1/booleans/truish.py</a></li>
+<li class="sub"><a href="#tb-033-python_course_mar26class1condtcp_servicesjson">TB-033: python_course_mar26/class1/cond/tcp_services.json</a></li>
+<li class="sub"><a href="#tb-034-python_course_mar26class1exercisescond_excond_ex1md">TB-034: python_course_mar26/class1/exercises/cond_ex/cond_ex1.md</a></li>
+<li class="sub"><a href="#tb-035-python_course_mar26class1exercisescond_excond_ex1py">TB-035: python_course_mar26/class1/exercises/cond_ex/cond_ex1.py</a></li>
+</ol>
+    </aside>
+  </div>
+  <script src="assets/book.js"></script>
+</body>
+</html>

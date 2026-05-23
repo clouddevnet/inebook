@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Chapter 4: Working Through Networks with Loops | Python Network Automation Crash Course</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/book.css">
+</head>
+<body>
+  <nav class="site-nav">
+    <a class="nav-logo" href="index.html">Python Network Automation <span class="logo-badge">Book</span></a>
+    <div class="nav-actions">
+      <a href="part-iii-labs.html">Labs</a>
+      <a href="references.html">References</a>
+      <button class="theme-toggle" data-theme-toggle type="button">Dark</button>
+    </div>
+  </nav>
+  <div class="page-layout">
+    <aside class="sidebar-left">
+      <div class="toc-label">Start</div>
+<ol class="chapter-list">
+<li><a class="" href="index.html"><span>Home</span><small>Python Network Automation Crash Course</small></a></li>
+<li><a class="" href="introduction.html"><span>Introduction</span><small>Introduction: The Evolution You Cannot Ignore</small></a></li>
+</ol>
+<div class="toc-label">Chapters</div>
+<ol class="chapter-list">
+<li><a class="" href="ch01-chapter-1-getting-started-in-a-network-lab.html"><span>Ch 1</span><small>Chapter 1: Getting Started in a Network Lab</small></a></li>
+<li><a class="" href="ch02-chapter-2-variables-strings-and-device-facts.html"><span>Ch 2</span><small>Chapter 2: Variables, Strings, and Device Facts</small></a></li>
+<li><a class="" href="ch03-chapter-3-introducing-device-lists.html"><span>Ch 3</span><small>Chapter 3: Introducing Device Lists</small></a></li>
+<li><a class="active" href="ch04-chapter-4-working-through-networks-with-loops.html"><span>Ch 4</span><small>Chapter 4: Working Through Networks with Loops</small></a></li>
+<li><a class="" href="ch05-chapter-5-if-statements-for-network-decisions.html"><span>Ch 5</span><small>Chapter 5: If Statements for Network Decisions</small></a></li>
+<li><a class="" href="ch06-chapter-6-dictionaries-for-device-inventory.html"><span>Ch 6</span><small>Chapter 6: Dictionaries for Device Inventory</small></a></li>
+<li><a class="" href="ch07-chapter-7-operator-input-and-while-loops.html"><span>Ch 7</span><small>Chapter 7: Operator Input and While Loops</small></a></li>
+<li><a class="" href="ch08-chapter-8-functions-for-reusable-automation.html"><span>Ch 8</span><small>Chapter 8: Functions for Reusable Automation</small></a></li>
+<li><a class="" href="ch09-chapter-9-classes-for-devices-and-sessions.html"><span>Ch 9</span><small>Chapter 9: Classes for Devices and Sessions</small></a></li>
+<li><a class="" href="ch10-chapter-10-files-exceptions-and-network-data.html"><span>Ch 10</span><small>Chapter 10: Files, Exceptions, and Network Data</small></a></li>
+<li><a class="" href="ch11-chapter-11-testing-network-automation.html"><span>Ch 11</span><small>Chapter 11: Testing Network Automation</small></a></li>
+<li><a class="" href="part-ii-network-automation.html"><span>Part II</span><small>Part II: Applying Python to Network Automation</small></a></li>
+<li><a class="" href="ch12-chapter-12-netmiko-sshing-to-your-network-at-python-sp.html"><span>Ch 12</span><small>Chapter 12: Netmiko: SSHing to Your Network at Python Speed</small></a></li>
+<li><a class="" href="ch13-chapter-13-multi-device-automation-and-file-driven-inv.html"><span>Ch 13</span><small>Chapter 13: Multi-Device Automation and File-Driven Inventory</small></a></li>
+<li><a class="" href="ch14-chapter-14-production-scripts-exceptions-env-vars-and-.html"><span>Ch 14</span><small>Chapter 14: Production Scripts: Exceptions, Env Vars, and Show Commands</small></a></li>
+<li><a class="" href="ch15-chapter-15-automated-backup-and-inventory-reports.html"><span>Ch 15</span><small>Chapter 15: Automated Backup and Inventory Reports</small></a></li>
+</ol>
+<div class="toc-label">Labs</div>
+<ol class="chapter-list">
+<li><a class="" href="part-iii-labs.html"><span>Part III Labs</span><small>Part III: Twin-Bridges Mastery Lab Workbook</small></a></li>
+<li><a class="" href="lab-track-01.html"><span>Lab Track 1</span><small>Lab Track 1: Getting Started in a Network Lab</small></a></li>
+<li><a class="" href="lab-track-02.html"><span>Lab Track 2</span><small>Lab Track 2: Variables, Strings, and Device Facts</small></a></li>
+<li><a class="" href="lab-track-03.html"><span>Lab Track 3</span><small>Lab Track 3: Introducing Device Lists</small></a></li>
+<li><a class="" href="lab-track-04.html"><span>Lab Track 4</span><small>Lab Track 4: Working Through Networks with Loops</small></a></li>
+<li><a class="" href="lab-track-05.html"><span>Lab Track 5</span><small>Lab Track 5: If Statements for Network Decisions</small></a></li>
+<li><a class="" href="lab-track-06.html"><span>Lab Track 6</span><small>Lab Track 6: Dictionaries for Device Inventory</small></a></li>
+<li><a class="" href="lab-track-07.html"><span>Lab Track 7</span><small>Lab Track 7: Operator Input and While Loops</small></a></li>
+<li><a class="" href="lab-track-08.html"><span>Lab Track 8</span><small>Lab Track 8: Functions for Reusable Automation</small></a></li>
+<li><a class="" href="lab-track-09.html"><span>Lab Track 9</span><small>Lab Track 9: Classes for Devices and Sessions</small></a></li>
+<li><a class="" href="lab-track-10.html"><span>Lab Track 10</span><small>Lab Track 10: Files, Exceptions, and Network Data</small></a></li>
+<li><a class="" href="lab-track-11.html"><span>Lab Track 11</span><small>Lab Track 11: Testing Network Automation</small></a></li>
+<li><a class="" href="lab-track-12.html"><span>Lab Track 12</span><small>Lab Track 12: Starting a Netmiko Project</small></a></li>
+<li><a class="" href="lab-track-13.html"><span>Lab Track 13</span><small>Lab Track 13: Collecting Show Commands Across a Fleet</small></a></li>
+<li><a class="" href="lab-track-14.html"><span>Lab Track 14</span><small>Lab Track 14: Configuration, Validation, and Rollback Thinking</small></a></li>
+<li><a class="" href="lab-track-15.html"><span>Lab Track 15</span><small>Lab Track 15: Generating Network Reports</small></a></li>
+<li><a class="" href="lab-track-16.html"><span>Lab Track 16</span><small>Lab Track 16: Inventories, YAML, JSON, and Real-World Data</small></a></li>
+<li><a class="" href="lab-track-17.html"><span>Lab Track 17</span><small>Lab Track 17: Network APIs</small></a></li>
+<li><a class="" href="lab-track-18.html"><span>Lab Track 18</span><small>Lab Track 18: Building a Network Automation Tool</small></a></li>
+<li><a class="" href="lab-track-19.html"><span>Lab Track 19</span><small>Lab Track 19: Credentials, Ownership, and Guardrails</small></a></li>
+<li><a class="" href="lab-track-20.html"><span>Lab Track 20</span><small>Lab Track 20: Operating and Deploying Automation</small></a></li>
+</ol>
+<div class="toc-label">Back Matter</div>
+<ol class="chapter-list">
+<li><a class="" href="references.html"><span>References</span><small>References</small></a></li>
+</ol>
+    </aside>
+    <main class="main-content">
+      <article class="article-shell">
+        <div class="article-meta">Chapters · Ch 4</div>
+        <h1 id="chapter-4-working-through-networks-with-loops">Chapter 4: Working Through Networks with Loops</h1>
+<h2 id="what-this-chapter-teaches">What This Chapter Teaches</h2>
+<p>Chapter 4 is where Python starts to feel useful. A list lets you store many
+things, but a loop lets you do something with each thing.</p>
+<p>The classic beginner pattern is a list of names:</p>
+<div class="highlight"><pre><span></span><code><span class="n">magicians</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;alice&quot;</span><span class="p">,</span> <span class="s2">&quot;david&quot;</span><span class="p">,</span> <span class="s2">&quot;carolina&quot;</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">magician</span> <span class="ow">in</span> <span class="n">magicians</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">magician</span><span class="o">.</span><span class="n">title</span><span class="p">()</span><span class="si">}</span><span class="s2">, that was a great trick!&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>The network version is a list of devices:</p>
+<div class="highlight"><pre><span></span><code><span class="n">devices</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;edge-sw1&quot;</span><span class="p">,</span> <span class="s2">&quot;edge-sw2&quot;</span><span class="p">,</span> <span class="s2">&quot;core-rtr1&quot;</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">device</span> <span class="ow">in</span> <span class="n">devices</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Collect show version from </span><span class="si">{</span><span class="n">device</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>The idea is identical:</p>
+<div class="highlight"><pre><span></span><code>for each item in this list, do this action
+</code></pre></div>
+
+<p>That sentence is the heart of network automation.</p>
+<h2 id="why-loops-matter-to-network-engineers">Why Loops Matter to Network Engineers</h2>
+<p>Most CLI work is repeated work:</p>
+<ul>
+<li>Check every access switch.</li>
+<li>Verify every uplink.</li>
+<li>Back up every router.</li>
+<li>Apply the same logging server to every device.</li>
+<li>Run the same show command before and after a change.</li>
+</ul>
+<p>When you do this manually, your brain becomes the loop. You connect to device 1,
+run the command, copy output, disconnect, connect to device 2, and repeat.</p>
+<p>Python lets the loop live in the program instead:</p>
+<div class="highlight"><pre><span></span><code><span class="n">devices</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;edge-sw1&quot;</span><span class="p">,</span> <span class="s2">&quot;edge-sw2&quot;</span><span class="p">,</span> <span class="s2">&quot;core-rtr1&quot;</span><span class="p">]</span>
+<span class="n">command</span> <span class="o">=</span> <span class="s2">&quot;show ip interface brief&quot;</span>
+
+<span class="k">for</span> <span class="n">device</span> <span class="ow">in</span> <span class="n">devices</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Would run &#39;</span><span class="si">{</span><span class="n">command</span><span class="si">}</span><span class="s2">&#39; on </span><span class="si">{</span><span class="n">device</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Output:</p>
+<div class="highlight"><pre><span></span><code>Would run &#39;show ip interface brief&#39; on edge-sw1
+Would run &#39;show ip interface brief&#39; on edge-sw2
+Would run &#39;show ip interface brief&#39; on core-rtr1
+</code></pre></div>
+
+<p>This is still a dry run, but it is now a multi-device dry run.</p>
+<h2 id="understanding-the-for-loop">Understanding the <code>for</code> Loop</h2>
+<p>Look carefully at this line:</p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">device</span> <span class="ow">in</span> <span class="n">devices</span><span class="p">:</span>
+</code></pre></div>
+
+<p>Read it as:</p>
+<div class="highlight"><pre><span></span><code>For each device in the devices list...
+</code></pre></div>
+
+<p>The variable <code>device</code> is temporary. On the first loop, it means <code>"edge-sw1"</code>.
+On the second loop, it means <code>"edge-sw2"</code>. On the third loop, it means
+<code>"core-rtr1"</code>.</p>
+<p>The indented lines underneath the <code>for</code> statement run once for each item:</p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">device</span> <span class="ow">in</span> <span class="n">devices</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Check complete&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Indentation matters. In Python, indentation is not decoration. It tells Python
+which lines belong to the loop.</p>
+<h2 id="classic-example-network-translation">Classic Example, Network Translation</h2>
+<p>Classic beginner example:</p>
+<div class="highlight"><pre><span></span><code><span class="n">pizzas</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;pepperoni&quot;</span><span class="p">,</span> <span class="s2">&quot;margherita&quot;</span><span class="p">,</span> <span class="s2">&quot;veggie&quot;</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">pizza</span> <span class="ow">in</span> <span class="n">pizzas</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;I like </span><span class="si">{</span><span class="n">pizza</span><span class="si">}</span><span class="s2"> pizza.&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;I really love pizza!&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Network equivalent:</p>
+<div class="highlight"><pre><span></span><code><span class="n">show_commands</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;show version&quot;</span><span class="p">,</span> <span class="s2">&quot;show ip interface brief&quot;</span><span class="p">,</span> <span class="s2">&quot;show vlan brief&quot;</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">command</span> <span class="ow">in</span> <span class="n">show_commands</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Planned command: </span><span class="si">{</span><span class="n">command</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Command plan complete.&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>The final <code>print()</code> is not indented, so it runs once after the loop is finished.</p>
+<h2 id="building-interface-names-with-range">Building Interface Names with <code>range()</code></h2>
+<p>The classic Python example uses <code>range()</code> to generate numbers:</p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Output:</p>
+<div class="highlight"><pre><span></span><code>1
+2
+3
+4
+5
+</code></pre></div>
+
+<p>Notice that <code>range(1, 6)</code> stops before <code>6</code>.</p>
+<p>Network engineers can use the same pattern to build interface names:</p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">port</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">):</span>
+    <span class="n">interface</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;GigabitEthernet1/0/</span><span class="si">{</span><span class="n">port</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">interface</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Output:</p>
+<div class="highlight"><pre><span></span><code>GigabitEthernet1/0/1
+GigabitEthernet1/0/2
+GigabitEthernet1/0/3
+GigabitEthernet1/0/4
+</code></pre></div>
+
+<p>Now the loop is not just printing numbers. It is generating network objects.</p>
+<h2 id="list-comprehensions-gently">List Comprehensions, Gently</h2>
+<p>A list comprehension builds a new list in one line.</p>
+<p>Classic example:</p>
+<div class="highlight"><pre><span></span><code><span class="n">squares</span> <span class="o">=</span> <span class="p">[</span><span class="n">value</span> <span class="o">**</span> <span class="mi">2</span> <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">)]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">squares</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Network equivalent:</p>
+<div class="highlight"><pre><span></span><code><span class="n">interfaces</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;GigabitEthernet1/0/</span><span class="si">{</span><span class="n">port</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">port</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">)]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">interfaces</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Output:</p>
+<div class="highlight"><pre><span></span><code>[&#39;GigabitEthernet1/0/1&#39;, &#39;GigabitEthernet1/0/2&#39;, &#39;GigabitEthernet1/0/3&#39;, &#39;GigabitEthernet1/0/4&#39;]
+</code></pre></div>
+
+<p>Do not overuse comprehensions while learning. A normal loop is easier to read.
+Use comprehensions when the pattern is simple and obvious.</p>
+<h2 id="netmiko-preview-looping-over-commands">Netmiko Preview: Looping Over Commands</h2>
+<p>Later, you will use this same pattern with Netmiko:</p>
+<div class="highlight"><pre><span></span><code><span class="n">show_commands</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;show ip route&quot;</span><span class="p">,</span> <span class="s2">&quot;show interface description&quot;</span><span class="p">,</span> <span class="s2">&quot;show clock&quot;</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">command</span> <span class="ow">in</span> <span class="n">show_commands</span><span class="p">:</span>
+    <span class="n">output</span> <span class="o">=</span> <span class="n">connection</span><span class="o">.</span><span class="n">send_command</span><span class="p">(</span><span class="n">command</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+</code></pre></div>
+
+<p>For now, replace the real connection with a dry run:</p>
+<div class="highlight"><pre><span></span><code><span class="n">show_commands</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;show ip route&quot;</span><span class="p">,</span> <span class="s2">&quot;show interface description&quot;</span><span class="p">,</span> <span class="s2">&quot;show clock&quot;</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">command</span> <span class="ow">in</span> <span class="n">show_commands</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Would send: </span><span class="si">{</span><span class="n">command</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>The important thing is the shape:</p>
+<div class="highlight"><pre><span></span><code>list of commands -&gt; loop -&gt; one command handled at a time
+</code></pre></div>
+
+<h2 id="lab-multi-device-dry-run">Lab: Multi-Device Dry Run</h2>
+<p>Create <code>chapter_04_device_loop.py</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="n">devices</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;edge-sw1&quot;</span><span class="p">,</span> <span class="s2">&quot;edge-sw2&quot;</span><span class="p">,</span> <span class="s2">&quot;core-rtr1&quot;</span><span class="p">]</span>
+<span class="n">command</span> <span class="o">=</span> <span class="s2">&quot;show ip interface brief&quot;</span>
+
+<span class="k">for</span> <span class="n">device</span> <span class="ow">in</span> <span class="n">devices</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Connecting to </span><span class="si">{</span><span class="n">device</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Would run: </span><span class="si">{</span><span class="n">command</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Disconnecting&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">()</span>
+</code></pre></div>
+
+<p>This is not connecting yet. It is rehearsing the workflow.</p>
+<h2 id="chapter-4-review">Chapter 4 Review</h2>
+<p>You learned:</p>
+<ul>
+<li>A <code>for</code> loop repeats work for every item in a list.</li>
+<li>Indentation controls what belongs inside the loop.</li>
+<li><code>range()</code> generates numbers.</li>
+<li>Loops can build interface names and command plans.</li>
+<li>A multi-device dry run is the safest first step toward real automation.</li>
+</ul>
+<hr>
+        <div class="chapter-nav-footer"><a class="nav-btn prev" href="ch03-chapter-3-introducing-device-lists.html">← Ch 3</a><a class="nav-btn next" href="ch05-chapter-5-if-statements-for-network-decisions.html">Ch 5 →</a></div>
+      </article>
+    </main>
+    <aside class="sidebar-right">
+      <div class="toc-label">On This Page</div>
+<ol class="page-toc">
+<li class=""><a href="#what-this-chapter-teaches">What This Chapter Teaches</a></li>
+<li class=""><a href="#why-loops-matter-to-network-engineers">Why Loops Matter to Network Engineers</a></li>
+<li class=""><a href="#understanding-the-for-loop">Understanding the for Loop</a></li>
+<li class=""><a href="#classic-example-network-translation">Classic Example, Network Translation</a></li>
+<li class=""><a href="#building-interface-names-with-range">Building Interface Names with range()</a></li>
+<li class=""><a href="#list-comprehensions-gently">List Comprehensions, Gently</a></li>
+<li class=""><a href="#netmiko-preview-looping-over-commands">Netmiko Preview: Looping Over Commands</a></li>
+<li class=""><a href="#lab-multi-device-dry-run">Lab: Multi-Device Dry Run</a></li>
+<li class=""><a href="#chapter-4-review">Chapter 4 Review</a></li>
+</ol>
+    </aside>
+  </div>
+  <script src="assets/book.js"></script>
+</body>
+</html>

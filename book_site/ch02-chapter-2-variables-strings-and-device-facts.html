@@ -1,0 +1,394 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Chapter 2: Variables, Strings, and Device Facts | Python Network Automation Crash Course</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/book.css">
+</head>
+<body>
+  <nav class="site-nav">
+    <a class="nav-logo" href="index.html">Python Network Automation <span class="logo-badge">Book</span></a>
+    <div class="nav-actions">
+      <a href="part-iii-labs.html">Labs</a>
+      <a href="references.html">References</a>
+      <button class="theme-toggle" data-theme-toggle type="button">Dark</button>
+    </div>
+  </nav>
+  <div class="page-layout">
+    <aside class="sidebar-left">
+      <div class="toc-label">Start</div>
+<ol class="chapter-list">
+<li><a class="" href="index.html"><span>Home</span><small>Python Network Automation Crash Course</small></a></li>
+<li><a class="" href="introduction.html"><span>Introduction</span><small>Introduction: The Evolution You Cannot Ignore</small></a></li>
+</ol>
+<div class="toc-label">Chapters</div>
+<ol class="chapter-list">
+<li><a class="" href="ch01-chapter-1-getting-started-in-a-network-lab.html"><span>Ch 1</span><small>Chapter 1: Getting Started in a Network Lab</small></a></li>
+<li><a class="active" href="ch02-chapter-2-variables-strings-and-device-facts.html"><span>Ch 2</span><small>Chapter 2: Variables, Strings, and Device Facts</small></a></li>
+<li><a class="" href="ch03-chapter-3-introducing-device-lists.html"><span>Ch 3</span><small>Chapter 3: Introducing Device Lists</small></a></li>
+<li><a class="" href="ch04-chapter-4-working-through-networks-with-loops.html"><span>Ch 4</span><small>Chapter 4: Working Through Networks with Loops</small></a></li>
+<li><a class="" href="ch05-chapter-5-if-statements-for-network-decisions.html"><span>Ch 5</span><small>Chapter 5: If Statements for Network Decisions</small></a></li>
+<li><a class="" href="ch06-chapter-6-dictionaries-for-device-inventory.html"><span>Ch 6</span><small>Chapter 6: Dictionaries for Device Inventory</small></a></li>
+<li><a class="" href="ch07-chapter-7-operator-input-and-while-loops.html"><span>Ch 7</span><small>Chapter 7: Operator Input and While Loops</small></a></li>
+<li><a class="" href="ch08-chapter-8-functions-for-reusable-automation.html"><span>Ch 8</span><small>Chapter 8: Functions for Reusable Automation</small></a></li>
+<li><a class="" href="ch09-chapter-9-classes-for-devices-and-sessions.html"><span>Ch 9</span><small>Chapter 9: Classes for Devices and Sessions</small></a></li>
+<li><a class="" href="ch10-chapter-10-files-exceptions-and-network-data.html"><span>Ch 10</span><small>Chapter 10: Files, Exceptions, and Network Data</small></a></li>
+<li><a class="" href="ch11-chapter-11-testing-network-automation.html"><span>Ch 11</span><small>Chapter 11: Testing Network Automation</small></a></li>
+<li><a class="" href="part-ii-network-automation.html"><span>Part II</span><small>Part II: Applying Python to Network Automation</small></a></li>
+<li><a class="" href="ch12-chapter-12-netmiko-sshing-to-your-network-at-python-sp.html"><span>Ch 12</span><small>Chapter 12: Netmiko: SSHing to Your Network at Python Speed</small></a></li>
+<li><a class="" href="ch13-chapter-13-multi-device-automation-and-file-driven-inv.html"><span>Ch 13</span><small>Chapter 13: Multi-Device Automation and File-Driven Inventory</small></a></li>
+<li><a class="" href="ch14-chapter-14-production-scripts-exceptions-env-vars-and-.html"><span>Ch 14</span><small>Chapter 14: Production Scripts: Exceptions, Env Vars, and Show Commands</small></a></li>
+<li><a class="" href="ch15-chapter-15-automated-backup-and-inventory-reports.html"><span>Ch 15</span><small>Chapter 15: Automated Backup and Inventory Reports</small></a></li>
+</ol>
+<div class="toc-label">Labs</div>
+<ol class="chapter-list">
+<li><a class="" href="part-iii-labs.html"><span>Part III Labs</span><small>Part III: Twin-Bridges Mastery Lab Workbook</small></a></li>
+<li><a class="" href="lab-track-01.html"><span>Lab Track 1</span><small>Lab Track 1: Getting Started in a Network Lab</small></a></li>
+<li><a class="" href="lab-track-02.html"><span>Lab Track 2</span><small>Lab Track 2: Variables, Strings, and Device Facts</small></a></li>
+<li><a class="" href="lab-track-03.html"><span>Lab Track 3</span><small>Lab Track 3: Introducing Device Lists</small></a></li>
+<li><a class="" href="lab-track-04.html"><span>Lab Track 4</span><small>Lab Track 4: Working Through Networks with Loops</small></a></li>
+<li><a class="" href="lab-track-05.html"><span>Lab Track 5</span><small>Lab Track 5: If Statements for Network Decisions</small></a></li>
+<li><a class="" href="lab-track-06.html"><span>Lab Track 6</span><small>Lab Track 6: Dictionaries for Device Inventory</small></a></li>
+<li><a class="" href="lab-track-07.html"><span>Lab Track 7</span><small>Lab Track 7: Operator Input and While Loops</small></a></li>
+<li><a class="" href="lab-track-08.html"><span>Lab Track 8</span><small>Lab Track 8: Functions for Reusable Automation</small></a></li>
+<li><a class="" href="lab-track-09.html"><span>Lab Track 9</span><small>Lab Track 9: Classes for Devices and Sessions</small></a></li>
+<li><a class="" href="lab-track-10.html"><span>Lab Track 10</span><small>Lab Track 10: Files, Exceptions, and Network Data</small></a></li>
+<li><a class="" href="lab-track-11.html"><span>Lab Track 11</span><small>Lab Track 11: Testing Network Automation</small></a></li>
+<li><a class="" href="lab-track-12.html"><span>Lab Track 12</span><small>Lab Track 12: Starting a Netmiko Project</small></a></li>
+<li><a class="" href="lab-track-13.html"><span>Lab Track 13</span><small>Lab Track 13: Collecting Show Commands Across a Fleet</small></a></li>
+<li><a class="" href="lab-track-14.html"><span>Lab Track 14</span><small>Lab Track 14: Configuration, Validation, and Rollback Thinking</small></a></li>
+<li><a class="" href="lab-track-15.html"><span>Lab Track 15</span><small>Lab Track 15: Generating Network Reports</small></a></li>
+<li><a class="" href="lab-track-16.html"><span>Lab Track 16</span><small>Lab Track 16: Inventories, YAML, JSON, and Real-World Data</small></a></li>
+<li><a class="" href="lab-track-17.html"><span>Lab Track 17</span><small>Lab Track 17: Network APIs</small></a></li>
+<li><a class="" href="lab-track-18.html"><span>Lab Track 18</span><small>Lab Track 18: Building a Network Automation Tool</small></a></li>
+<li><a class="" href="lab-track-19.html"><span>Lab Track 19</span><small>Lab Track 19: Credentials, Ownership, and Guardrails</small></a></li>
+<li><a class="" href="lab-track-20.html"><span>Lab Track 20</span><small>Lab Track 20: Operating and Deploying Automation</small></a></li>
+</ol>
+<div class="toc-label">Back Matter</div>
+<ol class="chapter-list">
+<li><a class="" href="references.html"><span>References</span><small>References</small></a></li>
+</ol>
+    </aside>
+    <main class="main-content">
+      <article class="article-shell">
+        <div class="article-meta">Chapters · Ch 2</div>
+        <h1 id="chapter-2-variables-strings-and-device-facts">Chapter 2: Variables, Strings, and Device Facts</h1>
+<h2 id="what-this-chapter-teaches">What This Chapter Teaches</h2>
+<p>In <em>Python Crash Course</em>, Chapter 2 introduces variables, strings, numbers, and
+comments. In network automation, these are not abstract programming ideas.
+They are how you describe the network.</p>
+<p>A device has facts:</p>
+<ul>
+<li>hostname</li>
+<li>management IP</li>
+<li>platform</li>
+<li>site</li>
+<li>role</li>
+<li>software version</li>
+<li>serial number</li>
+</ul>
+<p>Python variables give names to those facts.</p>
+<h2 id="variables-are-labels">Variables Are Labels</h2>
+<p>A variable is a label attached to a value:</p>
+<div class="highlight"><pre><span></span><code><span class="n">hostname</span> <span class="o">=</span> <span class="s2">&quot;edge-sw1&quot;</span>
+<span class="n">mgmt_ip</span> <span class="o">=</span> <span class="s2">&quot;192.0.2.10&quot;</span>
+<span class="n">platform</span> <span class="o">=</span> <span class="s2">&quot;cisco_ios&quot;</span>
+</code></pre></div>
+
+<p>Read this as:</p>
+<div class="highlight"><pre><span></span><code>hostname means edge-sw1
+mgmt_ip means 192.0.2.10
+platform means cisco_ios
+</code></pre></div>
+
+<p>The power is not that Python can remember one value. The power is that the same
+script can later use different values for different devices.</p>
+<h2 id="strings-are-network-text">Strings Are Network Text</h2>
+<p>A string is text. In network automation, most of your early data is text:</p>
+<ul>
+<li>hostnames</li>
+<li>interface names</li>
+<li>commands</li>
+<li>descriptions</li>
+<li>IP addresses</li>
+<li>file names</li>
+<li>device prompts</li>
+</ul>
+<p>Examples:</p>
+<div class="highlight"><pre><span></span><code><span class="n">hostname</span> <span class="o">=</span> <span class="s2">&quot;dist-sw1&quot;</span>
+<span class="n">interface</span> <span class="o">=</span> <span class="s2">&quot;GigabitEthernet1/0/24&quot;</span>
+<span class="n">description</span> <span class="o">=</span> <span class="s2">&quot;Uplink to core-rtr1&quot;</span>
+<span class="n">command</span> <span class="o">=</span> <span class="s2">&quot;show interface status&quot;</span>
+</code></pre></div>
+
+<p>The quotes tell Python, "this is text."</p>
+<h2 id="use-names-that-explain-the-network">Use Names That Explain the Network</h2>
+<p>This works:</p>
+<div class="highlight"><pre><span></span><code><span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;edge-sw1&quot;</span>
+<span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;show version&quot;</span>
+</code></pre></div>
+
+<p>But this is better:</p>
+<div class="highlight"><pre><span></span><code><span class="n">hostname</span> <span class="o">=</span> <span class="s2">&quot;edge-sw1&quot;</span>
+<span class="n">show_command</span> <span class="o">=</span> <span class="s2">&quot;show version&quot;</span>
+</code></pre></div>
+
+<p>Good variable names reduce mental effort. Network automation already has enough
+complexity: device types, prompts, credentials, command output, failure modes.
+Do not make the reader decode mysterious variable names too.</p>
+<h2 id="build-readable-output-with-f-strings">Build Readable Output with f-Strings</h2>
+<p>An f-string lets you place variable values inside text:</p>
+<div class="highlight"><pre><span></span><code><span class="n">hostname</span> <span class="o">=</span> <span class="s2">&quot;edge-sw1&quot;</span>
+<span class="n">mgmt_ip</span> <span class="o">=</span> <span class="s2">&quot;192.0.2.10&quot;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">hostname</span><span class="si">}</span><span class="s2"> is managed at </span><span class="si">{</span><span class="n">mgmt_ip</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Output:</p>
+<div class="highlight"><pre><span></span><code>edge-sw1 is managed at 192.0.2.10.
+</code></pre></div>
+
+<p>The <code>f</code> before the quote means "format this string." Anything inside <code>{}</code> is
+evaluated by Python and inserted into the final text.</p>
+<p>The twin-bridges string example uses IP address text and f-string formatting to
+split and display octets. That is a perfect network example because IP addresses
+look simple to humans but still need careful handling in code.</p>
+<h2 id="splitting-an-ip-address">Splitting an IP Address</h2>
+<p>An IPv4 address is often written as four octets separated by dots:</p>
+<div class="highlight"><pre><span></span><code><span class="n">ip_address</span> <span class="o">=</span> <span class="s2">&quot;192.0.2.10&quot;</span>
+<span class="n">octets</span> <span class="o">=</span> <span class="n">ip_address</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">octets</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Output:</p>
+<div class="highlight"><pre><span></span><code>[&#39;192&#39;, &#39;0&#39;, &#39;2&#39;, &#39;10&#39;]
+</code></pre></div>
+
+<p>The <code>.split(".")</code> method says:</p>
+<div class="highlight"><pre><span></span><code>Take this string and cut it wherever you see a dot.
+</code></pre></div>
+
+<p>Now Python has a list of four strings. Later, you will use lists to process
+multiple devices and multiple commands. For now, notice the bridge:</p>
+<div class="highlight"><pre><span></span><code>network text -&gt; Python string method -&gt; structured pieces
+</code></pre></div>
+
+<h2 id="building-commands-from-variables">Building Commands from Variables</h2>
+<p>Hard-coded command:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;show running-config interface GigabitEthernet1/0/24&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Command built from variables:</p>
+<div class="highlight"><pre><span></span><code><span class="n">interface</span> <span class="o">=</span> <span class="s2">&quot;GigabitEthernet1/0/24&quot;</span>
+<span class="n">command</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;show running-config interface </span><span class="si">{</span><span class="n">interface</span><span class="si">}</span><span class="s2">&quot;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">command</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Output:</p>
+<div class="highlight"><pre><span></span><code>show running-config interface GigabitEthernet1/0/24
+</code></pre></div>
+
+<p>The second version is more useful because <code>interface</code> can change.</p>
+<div class="highlight"><pre><span></span><code><span class="n">interface</span> <span class="o">=</span> <span class="s2">&quot;Vlan20&quot;</span>
+<span class="n">command</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;show running-config interface </span><span class="si">{</span><span class="n">interface</span><span class="si">}</span><span class="s2">&quot;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">command</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Output:</p>
+<div class="highlight"><pre><span></span><code>show running-config interface Vlan20
+</code></pre></div>
+
+<p>This is the beginning of automation. You stop typing final commands manually
+and start writing code that creates the correct command from facts.</p>
+<h2 id="comments-explain-intent">Comments Explain Intent</h2>
+<p>Comments begin with <code>#</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># This is a dry run. Do not connect to a device yet.</span>
+<span class="n">hostname</span> <span class="o">=</span> <span class="s2">&quot;edge-sw1&quot;</span>
+<span class="n">command</span> <span class="o">=</span> <span class="s2">&quot;show version&quot;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Would run </span><span class="si">{</span><span class="n">command</span><span class="si">}</span><span class="s2"> on </span><span class="si">{</span><span class="n">hostname</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Comments should explain why the code exists or what safety boundary matters.
+They should not repeat the obvious.</p>
+<p>Weak comment:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Set hostname</span>
+<span class="n">hostname</span> <span class="o">=</span> <span class="s2">&quot;edge-sw1&quot;</span>
+</code></pre></div>
+
+<p>Better comment:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Use a lab hostname while learning. Production inventory comes later.</span>
+<span class="n">hostname</span> <span class="o">=</span> <span class="s2">&quot;edge-sw1&quot;</span>
+</code></pre></div>
+
+<h2 id="device-facts-as-variables">Device Facts as Variables</h2>
+<p>Here is a small device summary:</p>
+<div class="highlight"><pre><span></span><code><span class="n">hostname</span> <span class="o">=</span> <span class="s2">&quot;edge-sw1&quot;</span>
+<span class="n">mgmt_ip</span> <span class="o">=</span> <span class="s2">&quot;192.0.2.10&quot;</span>
+<span class="n">site</span> <span class="o">=</span> <span class="s2">&quot;dal&quot;</span>
+<span class="n">role</span> <span class="o">=</span> <span class="s2">&quot;access&quot;</span>
+<span class="n">platform</span> <span class="o">=</span> <span class="s2">&quot;cisco_ios&quot;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">hostname</span><span class="si">}</span><span class="s2"> is an </span><span class="si">{</span><span class="n">role</span><span class="si">}</span><span class="s2"> switch in </span><span class="si">{</span><span class="n">site</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Management IP: </span><span class="si">{</span><span class="n">mgmt_ip</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Netmiko platform: </span><span class="si">{</span><span class="n">platform</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Output:</p>
+<div class="highlight"><pre><span></span><code>edge-sw1 is an access switch in dal.
+Management IP: 192.0.2.10
+Netmiko platform: cisco_ios
+</code></pre></div>
+
+<p>The value <code>cisco_ios</code> matters because Netmiko uses device types to understand
+how to interact with different platforms. You will not connect yet, but you are
+already learning how a future connection dictionary will be built.</p>
+<h2 id="preview-the-future-connection-dictionary">Preview: The Future Connection Dictionary</h2>
+<p>A later Netmiko script will collect device facts into a dictionary:</p>
+<div class="highlight"><pre><span></span><code><span class="n">device</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;device_type&quot;</span><span class="p">:</span> <span class="s2">&quot;cisco_ios&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;host&quot;</span><span class="p">:</span> <span class="s2">&quot;198.18.1.11&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;username&quot;</span><span class="p">:</span> <span class="s2">&quot;cisco&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;password&quot;</span><span class="p">:</span> <span class="s2">&quot;cisco&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>Every value in that dictionary starts as a simple Python value. Chapter 2 is
+where those values become familiar.</p>
+<p>For now, you can print the same facts safely:</p>
+<div class="highlight"><pre><span></span><code><span class="n">device_type</span> <span class="o">=</span> <span class="s2">&quot;cisco_ios&quot;</span>
+<span class="n">host</span> <span class="o">=</span> <span class="s2">&quot;198.18.1.11&quot;</span>
+<span class="n">username</span> <span class="o">=</span> <span class="s2">&quot;cisco&quot;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Device type: </span><span class="si">{</span><span class="n">device_type</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Host: </span><span class="si">{</span><span class="n">host</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Username: </span><span class="si">{</span><span class="n">username</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Password: not printed&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>That last line is intentional. Do not train yourself to print secrets.</p>
+<h2 id="lab-create-a-device-fact-sheet">Lab: Create a Device Fact Sheet</h2>
+<p>Create <code>chapter_02_device_facts.py</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="n">hostname</span> <span class="o">=</span> <span class="s2">&quot;edge-sw1&quot;</span>
+<span class="n">mgmt_ip</span> <span class="o">=</span> <span class="s2">&quot;192.0.2.10&quot;</span>
+<span class="n">platform</span> <span class="o">=</span> <span class="s2">&quot;cisco_ios&quot;</span>
+<span class="n">site</span> <span class="o">=</span> <span class="s2">&quot;dal&quot;</span>
+<span class="n">role</span> <span class="o">=</span> <span class="s2">&quot;access&quot;</span>
+<span class="n">software_version</span> <span class="o">=</span> <span class="s2">&quot;17.09&quot;</span>
+
+<span class="n">summary</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">hostname</span><span class="si">}</span><span class="s2"> is a </span><span class="si">{</span><span class="n">role</span><span class="si">}</span><span class="s2"> device in </span><span class="si">{</span><span class="n">site</span><span class="si">}</span><span class="s2">.&quot;</span>
+<span class="n">netmiko_hint</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Use device_type=</span><span class="si">{</span><span class="n">platform</span><span class="si">}</span><span class="s2"> when connecting with Netmiko.&quot;</span>
+<span class="n">version_line</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Expected software version: </span><span class="si">{</span><span class="n">software_version</span><span class="si">}</span><span class="s2">&quot;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">summary</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Management IP: </span><span class="si">{</span><span class="n">mgmt_ip</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">netmiko_hint</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">version_line</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Run it, then change:</p>
+<ul>
+<li><code>hostname</code></li>
+<li><code>mgmt_ip</code></li>
+<li><code>site</code></li>
+</ul>
+<p>Run it again and confirm the output follows the new facts.</p>
+<h2 id="lab-build-a-show-command">Lab: Build a Show Command</h2>
+<p>Create <code>chapter_02_command_builder.py</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="n">interface</span> <span class="o">=</span> <span class="s2">&quot;GigabitEthernet1/0/1&quot;</span>
+<span class="n">command</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;show running-config interface </span><span class="si">{</span><span class="n">interface</span><span class="si">}</span><span class="s2">&quot;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Dry run command:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">command</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Then change <code>interface</code> to:</p>
+<div class="highlight"><pre><span></span><code><span class="n">interface</span> <span class="o">=</span> <span class="s2">&quot;Vlan20&quot;</span>
+</code></pre></div>
+
+<p>This is a tiny idea, but it scales. The same pattern later becomes:</p>
+<div class="highlight"><pre><span></span><code>read interface list -&gt; build command for each interface -&gt; collect output
+</code></pre></div>
+
+<h2 id="common-beginner-mistakes">Common Beginner Mistakes</h2>
+<p><strong>Mistake: Forgetting quotes around text.</strong></p>
+<p>This is wrong:</p>
+<div class="highlight"><pre><span></span><code><span class="n">hostname</span> <span class="o">=</span> <span class="n">edge</span><span class="o">-</span><span class="n">sw1</span>
+</code></pre></div>
+
+<p>Python will think <code>edge</code> is code, not text. Use quotes:</p>
+<div class="highlight"><pre><span></span><code><span class="n">hostname</span> <span class="o">=</span> <span class="s2">&quot;edge-sw1&quot;</span>
+</code></pre></div>
+
+<p><strong>Mistake: Printing secrets.</strong></p>
+<p>It is fine to print a hostname, command, or management IP in a lab. Do not print
+passwords, API tokens, or private keys.</p>
+<p><strong>Mistake: Building unreadable f-strings.</strong></p>
+<p>If an f-string becomes too long, break the problem into smaller variables.</p>
+<h2 id="chapter-2-review">Chapter 2 Review</h2>
+<p>You learned:</p>
+<ul>
+<li>Variables label network facts.</li>
+<li>Strings hold hostnames, commands, interface names, and IP addresses.</li>
+<li>f-strings create readable output and command text.</li>
+<li>Comments should explain intent and safety.</li>
+<li>Chapter 2 values will later become Netmiko connection details.</li>
+</ul>
+<h2 id="practice-questions">Practice Questions</h2>
+<ol>
+<li>Why is <code>hostname</code> a better variable name than <code>x</code>?</li>
+<li>What does the <code>f</code> mean in an f-string?</li>
+<li>Why should a script avoid printing passwords?</li>
+<li>What does <code>"192.0.2.10".split(".")</code> produce?</li>
+</ol>
+<h2 id="practice-exercise">Practice Exercise</h2>
+<p>Write a script that stores these facts and prints a clean summary:</p>
+<ul>
+<li>hostname: <code>core-rtr1</code></li>
+<li>management IP: <code>192.0.2.20</code></li>
+<li>platform: <code>cisco_ios</code></li>
+<li>role: <code>core</code></li>
+<li>planned command: <code>show ip route</code></li>
+</ul>
+<p>Expected style:</p>
+<div class="highlight"><pre><span></span><code>core-rtr1 is a core device.
+Connect using platform cisco_ios at 192.0.2.20.
+Dry run command: show ip route
+</code></pre></div>
+
+<hr>
+        <div class="chapter-nav-footer"><a class="nav-btn prev" href="ch01-chapter-1-getting-started-in-a-network-lab.html">← Ch 1</a><a class="nav-btn next" href="ch03-chapter-3-introducing-device-lists.html">Ch 3 →</a></div>
+      </article>
+    </main>
+    <aside class="sidebar-right">
+      <div class="toc-label">On This Page</div>
+<ol class="page-toc">
+<li class=""><a href="#what-this-chapter-teaches">What This Chapter Teaches</a></li>
+<li class=""><a href="#variables-are-labels">Variables Are Labels</a></li>
+<li class=""><a href="#strings-are-network-text">Strings Are Network Text</a></li>
+<li class=""><a href="#use-names-that-explain-the-network">Use Names That Explain the Network</a></li>
+<li class=""><a href="#build-readable-output-with-f-strings">Build Readable Output with f-Strings</a></li>
+<li class=""><a href="#splitting-an-ip-address">Splitting an IP Address</a></li>
+<li class=""><a href="#building-commands-from-variables">Building Commands from Variables</a></li>
+<li class=""><a href="#comments-explain-intent">Comments Explain Intent</a></li>
+<li class=""><a href="#device-facts-as-variables">Device Facts as Variables</a></li>
+<li class=""><a href="#preview-the-future-connection-dictionary">Preview: The Future Connection Dictionary</a></li>
+<li class=""><a href="#lab-create-a-device-fact-sheet">Lab: Create a Device Fact Sheet</a></li>
+<li class=""><a href="#lab-build-a-show-command">Lab: Build a Show Command</a></li>
+<li class=""><a href="#common-beginner-mistakes">Common Beginner Mistakes</a></li>
+<li class=""><a href="#chapter-2-review">Chapter 2 Review</a></li>
+<li class=""><a href="#practice-questions">Practice Questions</a></li>
+<li class=""><a href="#practice-exercise">Practice Exercise</a></li>
+</ol>
+    </aside>
+  </div>
+  <script src="assets/book.js"></script>
+</body>
+</html>
